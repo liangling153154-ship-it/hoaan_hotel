@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#3D2E1E"/>
+<title>Hoa Binh Bus · Public Bus in Cao Bang · Hoa An Hotel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gd:    #3D2E1E;
+  --gm:    #7D6347;
+  --gl:    #D8C9A8;
+  --or:    #B85030;
+  --od:    #9A3E22;
+  --cr:    #F0E8D5;
+  --brown: #1A1208;
+  --tx:    #1a1a1a;
+  --tm:    #6a5f50;
+  --line:  rgba(61,46,30,0.13);
+  --r:     14px;
+  --sh:    0 4px 24px rgba(0,0,0,0.09);
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cr); color: var(--tx); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img, video { display: block; max-width: 100%; }
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px;
+  background: rgba(240,232,213,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gd); font-weight: 700; white-space: nowrap; line-height: 1.15; }
+.nav-logo small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; color: var(--tm); font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+.nav-back { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--gm); font-weight: 500; padding: 8px 14px; border-radius: 50px; background: rgba(61,46,30,0.07); transition: background 0.2s; }
+.nav-back:hover { background: rgba(61,46,30,0.13); color: var(--gd); }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero {
+  padding: 100px 40px 56px;
+  background-image: url('bus-hero.jpg'), linear-gradient(160deg, var(--brown) 0%, var(--gd) 60%, #5C3E22 100%);
+  background-size: cover, cover;
+  background-position: center, center;
+  color: white;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 35% 45%, rgba(0,0,0,0.55) 0%, transparent 75%),
+    linear-gradient(160deg, rgba(26,18,8,0.75) 0%, rgba(61,46,30,0.6) 55%, rgba(0,0,0,0.7) 100%);
+}
+.hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+.eyebrow {
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gl); opacity: 0.95; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.85);
+}
+.eyebrow::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--or); flex-shrink: 0; }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; line-height: 1.08; margin-bottom: 12px;
+  text-shadow: 0 2px 28px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.75);
+}
+.hero h1 em { font-style: italic; color: #F0CE94; text-shadow: 0 2px 28px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.75); }
+.hero-sub {
+  font-size: 0.92rem; color: rgba(255,255,255,0.95); max-width: 460px; line-height: 1.65; margin-bottom: 28px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.75);
+}
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-pill {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: white; font-size: 0.78rem; font-weight: 500;
+  padding: 6px 14px; border-radius: 50px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.hero-pill strong { color: #F0CE94; }
+
+/* ── OVERVIEW STATS ───────────────────────────────────────── */
+.overview {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  max-width: 680px; margin: 28px auto 0;
+  position: relative;
+}
+.ov-card {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 12px; padding: 14px 10px; text-align: center;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.ov-val { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: #F0CE94; font-style: italic; line-height: 1; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
+.ov-label { font-size: 0.7rem; color: rgba(255,255,255,0.85); margin-top: 4px; letter-spacing: 0.5px; }
+
+/* ── CONTENT ──────────────────────────────────────────────── */
+.container { max-width: 680px; margin: 0 auto; padding: 40px 40px 80px; }
+
+.section-label {
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--or); font-weight: 500; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--or); flex-shrink: 0; }
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; color: var(--gd); margin-bottom: 6px; line-height: 1.1;
+}
+.rule { width: 32px; height: 3px; background: var(--or); border-radius: 2px; margin-bottom: 28px; }
+
+/* ── STEPS ────────────────────────────────────────────────── */
+.steps { display: flex; flex-direction: column; }
+
+.step { display: flex; gap: 16px; position: relative; }
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute; left: 16px; top: 40px; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--gl), rgba(216,201,168,0.2));
+}
+
+.step-left { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+.step-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--gd); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; z-index: 1;
+  box-shadow: 0 2px 8px rgba(61,46,30,0.25);
+  flex-shrink: 0;
+}
+.step-body { padding-bottom: 32px; flex: 1; min-width: 0; }
+.step:last-child .step-body { padding-bottom: 0; }
+
+.step-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; color: var(--gd); font-weight: 700;
+  line-height: 1.15; padding-top: 5px; margin-bottom: 6px;
+}
+.step-body p { font-size: 0.88rem; color: var(--tm); line-height: 1.65; }
+.step-body p strong { color: var(--tx); }
+
+/* phrase box */
+.phrase {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gl); border-radius: 10px;
+  padding: 9px 14px; margin-top: 10px;
+}
+.phrase-vn { font-weight: 700; color: var(--gd); font-size: 0.95rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; }
+.phrase-sep { color: var(--gm); font-size: 0.7rem; }
+.phrase-en { color: var(--tm); font-size: 0.8rem; font-style: italic; }
+
+/* show-card box */
+.show-card {
+  margin-top: 12px;
+  background: white;
+  border: 2px dashed var(--gm);
+  border-radius: 12px; padding: 14px 16px;
+}
+.show-card-label {
+  font-size: 0.65rem; font-weight: 600; color: var(--gm);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.show-card p { font-size: 0.95rem; color: var(--tx); line-height: 1.7; }
+.show-card p strong { color: var(--gd); }
+
+/* photo block */
+.step-photo {
+  margin-top: 14px; border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--line); position: relative;
+  box-shadow: var(--sh);
+}
+.step-photo img,
+.step-photo video {
+  width: 100%; display: block;
+  max-height: 260px; object-fit: cover;
+}
+.photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(26,18,8,0.75), transparent);
+  color: white; font-size: 0.75rem; padding: 20px 12px 10px;
+  line-height: 1.4;
+}
+
+/* map link */
+.map-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; font-size: 0.82rem; color: var(--or); font-weight: 500;
+  border-bottom: 1px solid rgba(184,80,48,0.3); padding-bottom: 1px; transition: color 0.2s;
+}
+.map-link:hover { color: var(--od); }
+
+/* tip box */
+.tip-box {
+  background: rgba(184,80,48,0.07);
+  border-left: 3px solid var(--or);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px; margin-top: 12px;
+  font-size: 0.84rem; color: var(--tm); line-height: 1.55;
+}
+.tip-box strong { color: var(--tx); }
+
+/* ── RETURN BOX ───────────────────────────────────────────── */
+.return-box {
+  background: white; border-radius: 18px;
+  border: 1px solid var(--line); box-shadow: var(--sh);
+  padding: 28px; margin-top: 44px; overflow: hidden;
+}
+.return-box .section-label { margin-bottom: 6px; }
+.return-box h2 { font-size: 1.5rem; margin-bottom: 4px; }
+.return-box > p { font-size: 0.88rem; color: var(--tm); margin-top: 8px; line-height: 1.6; }
+.return-box > p strong { color: var(--tx); }
+
+.sched-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;
+}
+.sched-col { background: var(--cr); border-radius: 12px; padding: 14px 16px; }
+.sched-title { font-size: 0.68rem; font-weight: 600; color: var(--gm); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+.sched-times { font-size: 0.88rem; color: var(--tx); line-height: 1.85; }
+.t-last { color: var(--or); font-weight: 600; }
+.sched-tip { font-size: 0.82rem; color: var(--tm); line-height: 1.7; }
+.sched-tip strong { color: var(--tx); }
+
+/* ── WA CTA ───────────────────────────────────────────────── */
+.wa-cta {
+  margin-top: 32px; border-radius: 14px; overflow: hidden;
+  background: var(--gd); padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap;
+}
+.wa-cta-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: white; margin-bottom: 4px; }
+.wa-cta-text p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.wa-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25D366; color: white;
+  padding: 12px 22px; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 600;
+  white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  transition: filter 0.2s, transform 0.2s;
+}
+.wa-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.wa-btn svg { width: 18px; fill: white; }
+
+/* ── BUS ROUTES OVERVIEW ──────────────────────────────────── */
+.routes-sec { background: white; border-bottom: 1px solid var(--line); }
+.routes-wrap { max-width: 680px; margin: 0 auto; padding: 36px 40px; }
+.routes-intro { font-size: 0.88rem; color: var(--tm); line-height: 1.7; margin-bottom: 28px; }
+
+.route-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--sh); margin-bottom: 14px; }
+.route-card:last-child { margin-bottom: 0; }
+
+.route-head { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.route-head.r02 { background: var(--gd); }
+.route-head.r03 { background: var(--or); }
+.route-head-left { display: flex; align-items: center; gap: 12px; }
+.route-badge { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; padding: 4px 12px; border-radius: 50px; white-space: nowrap; }
+.route-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: white; line-height: 1.15; }
+.route-via { font-size: 0.68rem; color: rgba(255,255,255,0.58); margin-top: 2px; }
+.route-stats { display: flex; gap: 18px; flex-shrink: 0; }
+.route-stat { text-align: center; }
+.route-stat-val { font-size: 1rem; font-weight: 700; color: #D4B896; display: block; }
+.route-stat-lbl { font-size: 0.58rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; display: block; }
+
+.route-map-full { width: 100%; overflow: hidden; background: #e8f1e8; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.route-map-full img { width: 100%; height: auto; display: block; }
+
+.route-sched { padding: 16px 20px; background: var(--cr); }
+.sched-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sched-group-title { font-size: 0.64rem; font-weight: 600; color: var(--gm); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.time-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.time-pill { background: white; border: 1px solid var(--line); color: var(--tx); font-size: 0.76rem; font-weight: 500; padding: 3px 8px; border-radius: 6px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.time-pill.last { border-color: var(--or); color: var(--or); font-weight: 700; }
+.sched-note { font-size: 0.76rem; color: var(--tm); margin-top: 10px; line-height: 1.5; }
+
+.routes-connect { background: rgba(184,80,48,0.07); border-left: 3px solid var(--or); border-radius: 0 10px 10px 0; padding: 12px 16px; margin-top: 20px; font-size: 0.85rem; color: var(--tm); line-height: 1.6; }
+.routes-connect strong { color: var(--tx); }
+
+@media (max-width: 600px) {
+  .routes-wrap { padding: 28px 20px; }
+  .route-stats { gap: 12px; }
+  .sched-cols { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer {
+  text-align: center; padding: 24px 40px;
+  font-size: 0.78rem; color: var(--tm);
+  border-top: 1px solid var(--line);
+}
+footer a { color: var(--or); }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  nav { padding: 12px 20px; }
+  .hero { padding: 90px 20px 44px; }
+  .container { padding: 28px 20px 60px; }
+  .overview { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ov-val { font-size: 1.3rem; }
+  .sched-grid { grid-template-columns: 1fr; }
+  .wa-cta { padding: 20px; }
+  footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    Hoa An Hotel
+    <small>Cao Bang · Guest Guide</small>
+  </a>
+  <a href="../index.html" class="nav-back">← Back to site</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Cao Bang · Public Transport</div>
+    <h1>Hoa Binh Bus<br><em>Public Bus in Cao Bang</em></h1>
+    <p class="hero-sub">Two routes covering the whole province — cheap, frequent, and stops right in front of the hotel.</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><strong>~80.000₫</strong> per ride</div>
+      <div class="hero-pill"><strong>2 buses</strong> · 1 transfer</div>
+      <div class="hero-pill"><strong>~2 hrs</strong> each way</div>
+    </div>
+    <div class="overview">
+      <div class="ov-card">
+        <div class="ov-val">160k₫</div>
+        <div class="ov-label">total cost there</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-val">6</div>
+        <div class="ov-label">easy steps</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-val">17:00</div>
+        <div class="ov-label">last bus back</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUS ROUTES OVERVIEW -->
+<section class="routes-sec">
+  <div class="routes-wrap">
+
+    <div class="section-label">Cao Bang public buses</div>
+    <h2>2 routes, one city</h2>
+    <div class="rule"></div>
+    <p class="routes-intro">Cao Bang has two public bus lines covering the main attractions. Both stop <strong>in front of the hotel</strong> — no need to find a bus station. Tickets are paid to the conductor on board (~15,000₫ per ride).</p>
+
+    <!-- ROUTE 02 -->
+    <div class="route-card">
+      <div class="route-head r02">
+        <div class="route-head-left">
+          <div class="route-badge">Route 02</div>
+          <div>
+            <div class="route-title">Cao Bằng → Sóc Giang</div>
+            <div class="route-via">via Hòa An · Hà Quảng · border gate</div>
+          </div>
+        </div>
+        <div class="route-stats">
+          <div class="route-stat">
+            <span class="route-stat-val">53 km</span>
+            <span class="route-stat-lbl">distance</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-val">~1h15</span>
+            <span class="route-stat-lbl">journey</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-map-full">
+        <img src="route-02-map.jpg" alt="Route 02 map — Cao Bang to Sóc Giang" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="route-sched">
+        <div class="sched-cols">
+          <div>
+            <div class="sched-group-title">From Cao Bang City</div>
+            <div class="time-pills">
+              <span class="time-pill">5:10</span><span class="time-pill">6:25</span><span class="time-pill">7:10</span><span class="time-pill">7:50</span>
+              <span class="time-pill">8:30</span><span class="time-pill">9:15</span><span class="time-pill">10:00</span><span class="time-pill">10:40</span>
+              <span class="time-pill">11:20</span><span class="time-pill">13:00</span><span class="time-pill">13:45</span><span class="time-pill">14:30</span>
+              <span class="time-pill">15:10</span><span class="time-pill">15:50</span><span class="time-pill">16:30</span><span class="time-pill last">17:10</span>
+            </div>
+          </div>
+          <div>
+            <div class="sched-group-title">From Sóc Giang</div>
+            <div class="time-pills">
+              <span class="time-pill">5:10</span><span class="time-pill">5:45</span><span class="time-pill">6:25</span><span class="time-pill">7:10</span>
+              <span class="time-pill">7:50</span><span class="time-pill">8:30</span><span class="time-pill">9:15</span><span class="time-pill">10:00</span>
+              <span class="time-pill">10:40</span><span class="time-pill">11:20</span><span class="time-pill">12:15</span><span class="time-pill">13:00</span>
+              <span class="time-pill">13:45</span><span class="time-pill">14:30</span><span class="time-pill">15:10</span><span class="time-pill">15:50</span>
+              <span class="time-pill">16:30</span><span class="time-pill last">17:10</span>
+            </div>
+          </div>
+        </div>
+        <p class="sched-note">🏨 This bus stops in front of Hoa An Hotel — flag it down from the pavement.</p>
+      </div>
+    </div>
+
+    <!-- ROUTE 03 -->
+    <div class="route-card">
+      <div class="route-head r03">
+        <div class="route-head-left">
+          <div class="route-badge">Route 03</div>
+          <div>
+            <div class="route-title">Cao Bằng → Bản Giốc</div>
+            <div class="route-via">via Quảng Uyên · Trùng Khánh · waterfall</div>
+          </div>
+        </div>
+        <div class="route-stats">
+          <div class="route-stat">
+            <span class="route-stat-val">86.8 km</span>
+            <span class="route-stat-lbl">distance</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-val">~2h</span>
+            <span class="route-stat-lbl">journey</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-map-full">
+        <img src="route-03-map.jpg" alt="Route 03 map — Cao Bang to Ban Gioc" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="route-sched">
+        <div class="sched-cols">
+          <div>
+            <div class="sched-group-title">From Cao Bang City</div>
+            <div class="time-pills">
+              <span class="time-pill">5:05</span><span class="time-pill">5:35</span><span class="time-pill">6:10</span><span class="time-pill">6:45</span>
+              <span class="time-pill">7:25</span><span class="time-pill">8:00</span><span class="time-pill">8:35</span><span class="time-pill">9:15</span>
+              <span class="time-pill">9:55</span><span class="time-pill">10:30</span><span class="time-pill">11:05</span><span class="time-pill">11:45</span>
+              <span class="time-pill">12:30</span><span class="time-pill">13:10</span><span class="time-pill">13:50</span><span class="time-pill">14:30</span>
+              <span class="time-pill">15:10</span><span class="time-pill">15:45</span><span class="time-pill">16:20</span><span class="time-pill last">17:00</span>
+            </div>
+          </div>
+          <div>
+            <div class="sched-group-title">From Ban Gioc Waterfall</div>
+            <div class="time-pills">
+              <span class="time-pill">5:05</span><span class="time-pill">5:35</span><span class="time-pill">6:10</span><span class="time-pill">6:45</span>
+              <span class="time-pill">7:25</span><span class="time-pill">8:00</span><span class="time-pill">8:35</span><span class="time-pill">9:15</span>
+              <span class="time-pill">9:55</span><span class="time-pill">10:30</span><span class="time-pill">11:05</span><span class="time-pill">11:45</span>
+              <span class="time-pill">12:30</span><span class="time-pill">13:10</span><span class="time-pill">13:50</span><span class="time-pill">14:30</span>
+              <span class="time-pill">15:10</span><span class="time-pill">15:45</span><span class="time-pill">16:20</span><span class="time-pill last">17:00 ← last</span>
+            </div>
+          </div>
+        </div>
+        <p class="sched-note">⚠️ This bus picks up passengers at the <strong>transfer point</strong> (Đường Tròn Ngọc Xuân), not at the hotel directly — see guide below.</p>
+      </div>
+    </div>
+
+    <div class="routes-connect">
+      🗺️ <strong>Getting to Ban Gioc:</strong> Take Route 02 from the hotel → get off at the transfer point → catch Route 03 onward. The step-by-step guide below walks you through it.
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="section-label">Step by step</div>
+  <h2>How to get to Ban Gioc Waterfall</h2>
+  <div class="rule"></div>
+
+  <div class="steps">
+
+    <!-- 1 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num">1</div></div>
+      <div class="step-body">
+        <h3>Wait at the hotel gate</h3>
+        <p>Step outside and stand on the <strong>right side of the road</strong> — the pavement directly in front of the hotel entrance. The bus approaches from your left.</p>
+        <div class="step-photo">
+          <video autoplay loop muted playsinline>
+            <source src="hotel-gate.mp4" type="video/mp4">
+          </video>
+          <div class="photo-caption">Stand here — in front of the hotel gate. Bus comes from the right of this frame.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num">2</div></div>
+      <div class="step-body">
+        <h3>Flag down Bus Route 02</h3>
+        <p>When you see a bus approaching (direction look like the video), raise your hand to flag it down. You don't need to cross the road — the bus runs in the same direction as traffic on your side.</p>
+        <div class="tip-box">Any bus that passes in front of you is going the right way. Just wave — the driver will stop.</div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num">3</div></div>
+      <div class="step-body">
+        <h3>Tell the conductor: <em>"Ban Gioc"</em></h3>
+        <p>Once on board, tell the conductor your destination. They'll know exactly where to drop you for the transfer — no need to watch the stops yourself.</p>
+        <div class="phrase">
+          <span class="phrase-vn">Ban Gioc</span>
+          <span class="phrase-sep">·</span>
+          <span class="phrase-en">say: "Bahn Zok"</span>
+        </div>
+        <div class="show-card">
+          <div class="show-card-label">📋 SHOW THIS TO THE CONDUCTOR</div>
+          <p>Tôi cần đi Thác Bản Giốc, xin hãy cho tôi xuống điểm chuyển tuyến tại <strong>Đường Tròn Ngọc Xuân</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num">4</div></div>
+      <div class="step-body">
+        <h3>Get off at Đường Tròn Ngọc Xuân</h3>
+        <p>The conductor will tell you when. Once off, walk ~30 metres in the same direction the bus was going — you'll reach a roundabout. Phở Sành restaurant will be your waiting point. Wait on the roadside here for Route 03.</p>
+        <div class="step-photo">
+          <img src="transfer-point.png" alt="Transfer point at Đường Tròn Ngọc Xuân — wait here, bus comes from the right">
+          <div class="photo-caption">Đường Tròn Ngọc Xuân — Phở Sành on the left. Bus 03 comes from the right.</div>
+        </div>
+        <a class="map-link" href="https://maps.app.goo.gl/AQtygkPCkQXinXGz8" target="_blank" rel="noopener">
+          📍 Open transfer point in Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num">5</div></div>
+      <div class="step-body">
+        <h3>Flag down Bus Route 03</h3>
+        <p>Same as before — <strong>wave your hand</strong> at the bus coming from the right. Tell the conductor:</p>
+        <div class="phrase">
+          <span class="phrase-vn">Thác Bản Giốc</span>
+          <span class="phrase-sep">·</span>
+          <span class="phrase-en">say: "Tahk Bahn Zok"</span>
+        </div>
+        <div class="tip-box">Pay on board — around <strong>80.000₫</strong>. Have small notes ready.</div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="step">
+      <div class="step-left"><div class="step-num" style="background: var(--or);">6</div></div>
+      <div class="step-body">
+        <h3>You've arrived</h3>
+        <p>The bus drops you right at the <strong>Ban Gioc entrance gate</strong>. Admission ticket is sold at the gate. Enjoy the waterfall!</p>
+        <div class="tip-box">🌊 Best light is before 10 am. Take the <strong>7:25 or 8:00</strong> bus from the hotel to arrive early.</div>
+      </div>
+    </div>
+
+  </div><!-- /steps -->
+
+  <!-- RETURN -->
+  <div class="return-box">
+    <div class="section-label">Getting back</div>
+    <h2>Return journey</h2>
+    <p>From the waterfall entrance, <strong>flag down a bus going in the opposite direction</strong>. Tell them <em>"Cao Bằng"</em>. Get off again at <strong>Đường Tròn Ngọc Xuân</strong> to transfer to Bus Route 02 back to the hotel.</p>
+    <p style="margin-top:10px;"><strong>Where to wait for Bus 02:</strong> after getting off, cross over to the <strong>opposite side of the roundabout — next to the bridge</strong>. Look for the small bus stop kiosk; wait on the brick-paved sidewalk beside it. <strong>Wave your hand</strong> to flag down Bus 02 as it approaches — it won't stop automatically.</p>
+    <div class="step-photo">
+      <img src="return-stop.jpg" alt="Bus 02 return stop — wait next to the bridge at Đường Tròn Ngọc Xuân">
+      <div class="photo-caption">Wait on the brick sidewalk next to the bridge — Bus 02 stops here.</div>
+    </div>
+    <a class="map-link" href="https://maps.app.goo.gl/Ad1P9N9XNcktcDyi9" target="_blank" rel="noopener">
+      📍 Open Bus 02 return stop in Google Maps
+    </a>
+    <p style="margin-top:12px;"><strong>Last bus back: <span class="t-last">17:00</span></strong> — don't miss it or you'll need a motorbike taxi (~150.000₫).</p>
+    <div class="sched-grid">
+      <div class="sched-col">
+        <div class="sched-title">Good departure times from falls</div>
+        <div class="sched-times">
+          13:10<br>13:50<br>14:30<br>15:10<br>15:45<br>16:20<br>
+          <span class="t-last">17:00 · last bus</span>
+        </div>
+      </div>
+      <div class="sched-col">
+        <div class="sched-title">Pro tips</div>
+        <div class="sched-tip">
+          Take the <strong>7:25 or 8:00</strong> bus to arrive by mid-morning.<br><br>
+          Buses run roughly every <strong>30–40 min</strong>.<br><br>
+          Schedule can vary — confirm with us at reception the evening before.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WA CTA -->
+  <div class="wa-cta">
+    <div class="wa-cta-text">
+      <h3>Questions? Ask us first.</h3>
+      <p>We'll confirm bus times and give you a heads-up on anything unusual — road conditions, busy weekends, etc.</p>
+    </div>
+    <a class="wa-btn" href="https://wa.me/84941687931?text=Hi%20Luong.%20I%27d%20like%20to%20know%20more%20about%20the%20public%20bus%20to%20Ban%20Gioc." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp us
+    </a>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  Bus operated by Hoa Binh Transport · Schedule may vary ·
+  Call <a href="tel:1900561562">1900 561 562</a> to confirm ·
+  © 2025 Hoa An Hotel · Cao Bang
+</footer>
+
+</body>
+</html>
