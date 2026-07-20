@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta name="theme-color" content="#1F1410"/>
-<meta name="description" content="Welcome guide for Hoa An Hotel guests — address, check-in times, Wi-Fi, and on-site services in Cao Bang, Vietnam."/>
+<meta name="theme-color" content="#26201E"/>
+<meta name="description" content="Welcome guide for Hoa An Hotel guests: address for your bus driver, check-in times, Wi-Fi and on-site services in Cao Bang, Vietnam."/>
 <title>Welcome · Hoa An Hotel · Cao Bang</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ───────────────────────────────────────────────────────
@@ -17,31 +18,31 @@
 ─────────────────────────────────────────────────────── */
 :root{
   /* Editorial Luxury palette */
-  --bg:        #FDFBF7;
-  --bg-soft:   #F7F2E9;
-  --paper:     #FFFCF6;
-  --espresso:  #1F1410;
-  --ink:       #2A1D14;
-  --ink-2:     #4A3A2D;
-  --mute:      #7A6A5B;
-  --mute-2:    #9D8E7D;
-  --hairline:  rgba(31,20,16,0.08);
-  --hairline-2:rgba(31,20,16,0.13);
+  --bg:        #FAFBFB;
+  --bg-soft:   #F2F3F4;
+  --paper:     #FAFBFB;
+  --espresso:  #26201E;
+  --ink:       #26201E;
+  --ink-2:     #5C4A44;
+  --mute:      #5C5F61;
+  --mute-2:    #7B7E80;
+  --hairline:  rgba(43,33,30,0.08);
+  --hairline-2:rgba(43,33,30,0.13);
 
   /* Accents */
-  --sage:      #6E8253;
-  --sage-2:    #8FA372;
-  --sage-soft: #DCE5CB;
-  --sage-paper:#EEF1E2;
-  --terra:     #B85030;
-  --terra-d:   #9A3E22;
-  --gold:      #C9A86B;
+  --sage:      #557047;
+  --sage-2:    #74906A;
+  --sage-soft: #DCE3CF;
+  --sage-paper:#E9EBD9;
+  --terra:     #8A5A4E;
+  --terra-d:   #70493F;
+  --gold:      #DFAE4F;
 
   /* Surfaces */
-  --shell:     rgba(31,20,16,0.045);
-  --shell-2:   rgba(31,20,16,0.07);
+  --shell:     rgba(43,33,30,0.045);
+  --shell-2:   rgba(43,33,30,0.07);
   --core:      #FFFFFF;
-  --core-warm: #FBF6EC;
+  --core-warm: #FAFBFB;
 
   /* Motion */
   --ease:   cubic-bezier(0.32, 0.72, 0, 1);
@@ -55,7 +56,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
   background: var(--bg);
   color: var(--ink);
   font-feature-settings: 'ss01', 'ss02', 'cv11';
@@ -94,17 +95,17 @@ a:focus-visible, button:focus-visible {
 .mesh{
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(60vw 50vh at 12% 8%,  rgba(220,229,203,0.55) 0%, transparent 60%),
-    radial-gradient(50vw 45vh at 92% 18%, rgba(201,168,107,0.18) 0%, transparent 60%),
-    radial-gradient(70vw 55vh at 88% 96%, rgba(184,80,48,0.10)   0%, transparent 65%),
-    radial-gradient(60vw 50vh at 5% 90%,  rgba(110,130,83,0.10)  0%, transparent 60%);
+    radial-gradient(60vw 50vh at 12% 8%,  rgba(214,218,221,0.55) 0%, transparent 60%),
+    radial-gradient(50vw 45vh at 92% 18%, rgba(223,174,79,0.18) 0%, transparent 60%),
+    radial-gradient(70vw 55vh at 88% 96%, rgba(138,90,78,0.10)   0%, transparent 65%),
+    radial-gradient(60vw 50vh at 5% 90%,  rgba(110,92,87,0.10)  0%, transparent 60%);
 }
 
 /* ───────────────────────────────────────────────────────
    TYPOGRAPHY PRIMITIVES
 ─────────────────────────────────────────────────────── */
 .display{
-  font-family: 'Fraunces', 'Cormorant Garamond', serif;
+  font-family: 'Bricolage Grotesque', 'Bricolage Grotesque', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -120,14 +121,14 @@ a:focus-visible, button:focus-visible {
 }
 .eyebrow{
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--mute);
   padding: 6px 12px;
   border: 1px solid var(--hairline-2);
   border-radius: 999px;
-  background: rgba(255,252,246,0.6);
+  background: rgba(248,247,236,0.6);
   backdrop-filter: blur(8px);
 }
 .eyebrow::before{
@@ -135,7 +136,7 @@ a:focus-visible, button:focus-visible {
   background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft);
 }
 .lede{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 36, 'SOFT' 50;
   font-size: 1.15rem; line-height: 1.45;
   color: var(--ink-2);
@@ -157,18 +158,18 @@ a:focus-visible, button:focus-visible {
   pointer-events: auto;
   display: flex; align-items: center; gap: 6px;
   padding: 6px 6px 6px 18px;
-  background: rgba(253,251,247,0.7);
+  background: rgba(248,247,236,0.7);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border: 1px solid var(--hairline-2);
   border-radius: 999px;
   box-shadow:
     0 1px 0 rgba(255,255,255,0.6) inset,
-    0 12px 40px -12px rgba(31,20,16,0.18);
+    0 12px 40px -12px rgba(43,33,30,0.18);
   max-width: calc(100vw - 32px);
 }
 .nav-brand{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 36, 'SOFT' 30;
   font-size: 0.98rem; font-weight: 500;
   color: var(--espresso); white-space: nowrap;
@@ -203,12 +204,12 @@ a:focus-visible, button:focus-visible {
 .nav-cta .cta-icon{
   width: 26px; height: 26px;
   border-radius: 999px;
-  background: rgba(255,252,246,0.14);
+  background: rgba(248,247,236,0.14);
   display: inline-flex; align-items: center; justify-content: center;
   transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
-.nav-cta:hover{ background: #2D1F18; }
-.nav-cta:hover .cta-icon{ transform: translate(2px,-1px) scale(1.05); background: rgba(255,252,246,0.22); }
+.nav-cta:hover{ background: #26201E; }
+.nav-cta:hover .cta-icon{ transform: translate(2px,-1px) scale(1.05); background: rgba(248,247,236,0.22); }
 .nav-cta:active{ transform: scale(0.97); }
 .nav-cta svg{ width: 11px; height: 11px; stroke: var(--paper); fill: none; stroke-width: 2; }
 
@@ -238,7 +239,7 @@ a:focus-visible, button:focus-visible {
 /* Modal overlay menu */
 .nav-modal{
   position: fixed; inset: 0; z-index: 89;
-  background: rgba(253,251,247,0.82);
+  background: rgba(248,247,236,0.82);
   backdrop-filter: blur(40px) saturate(1.3);
   -webkit-backdrop-filter: blur(40px) saturate(1.3);
   opacity: 0; pointer-events: none;
@@ -255,7 +256,7 @@ a:focus-visible, button:focus-visible {
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 0;
   border-bottom: 1px solid var(--hairline);
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 96, 'SOFT' 30;
   font-size: clamp(1.5rem, 5vw, 2.4rem);
   font-weight: 400; color: var(--espresso);
@@ -300,7 +301,7 @@ a:focus-visible, button:focus-visible {
 }
 .nav-modal.open .nav-modal-foot{ opacity: 1; transform: none; }
 .nav-modal-foot a{
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: 0.82rem; padding: 0; border: none; opacity: 1; transform: none; filter: none;
   color: var(--ink-2);
   display: inline; line-height: inherit;
@@ -332,13 +333,13 @@ section{ position: relative; }
 .cta-pill .cta-icon{
   width: 30px; height: 30px;
   border-radius: 999px;
-  background: rgba(255,252,246,0.14);
+  background: rgba(248,247,236,0.14);
   display: inline-flex; align-items: center; justify-content: center;
   transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .cta-pill svg{ width: 12px; height: 12px; stroke: var(--paper); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.cta-pill:hover{ background: #2D1F18; }
-.cta-pill:hover .cta-icon{ transform: translate(2px,-1px) scale(1.06); background: rgba(255,252,246,0.22); }
+.cta-pill:hover{ background: #26201E; }
+.cta-pill:hover .cta-icon{ transform: translate(2px,-1px) scale(1.06); background: rgba(248,247,236,0.22); }
 .cta-pill:active{ transform: scale(0.97); }
 
 .cta-pill.ghost{ background: var(--paper); color: var(--ink); border: 1px solid var(--hairline-2); }
@@ -346,8 +347,8 @@ section{ position: relative; }
 .cta-pill.ghost svg{ stroke: var(--ink); }
 .cta-pill.ghost:hover{ background: var(--core-warm); }
 
-.cta-pill.wa{ background: #1FAA53; }
-.cta-pill.wa:hover{ background: #178f44; }
+.cta-pill.wa{ background: #168060; }
+.cta-pill.wa:hover{ background: #116149; }
 
 /* ───────────────────────────────────────────────────────
    SECTION HEAD
@@ -399,13 +400,13 @@ section{ position: relative; }
   display: flex; flex-direction: column;
   box-shadow:
     inset 0 1px 1px rgba(255,255,255,0.7),
-    inset 0 -1px 0 rgba(31,20,16,0.03);
+    inset 0 -1px 0 rgba(43,33,30,0.03);
   position: relative; overflow: hidden;
 }
 @media (min-width: 720px){
   .card-core{ padding: 22px 22px 24px; }
 }
-.card-shell:hover{ transform: translateY(-3px); border-color: rgba(31,20,16,0.18); }
+.card-shell:hover{ transform: translateY(-3px); border-color: rgba(43,33,30,0.18); }
 
 /* Spans */
 .s-1{ grid-column: span 1; }
@@ -431,7 +432,7 @@ section{ position: relative; }
   margin-bottom: 18px;
   padding: 5px 10px 5px 8px;
   background: var(--sage-paper);
-  border: 1px solid rgba(110,130,83,0.22);
+  border: 1px solid rgba(110,92,87,0.22);
   border-radius: 999px;
 }
 .ic-tag::before{
@@ -439,7 +440,7 @@ section{ position: relative; }
   background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft);
 }
 .ic-title{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 72, 'SOFT' 30;
   font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   line-height: 1.05;
@@ -457,7 +458,7 @@ section{ position: relative; }
   margin-top: auto; padding-top: 16px;
   font-size: 0.78rem; color: var(--mute);
   line-height: 1.55; font-style: italic;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 14, 'SOFT' 50;
 }
 
@@ -465,7 +466,7 @@ section{ position: relative; }
 .bus-tip{
   margin-top: 14px;
   padding: 14px 16px;
-  background: linear-gradient(180deg, rgba(184,80,48,0.06) 0%, rgba(184,80,48,0.02) 100%);
+  background: linear-gradient(180deg, rgba(138,90,78,0.06) 0%, rgba(138,90,78,0.02) 100%);
   border-left: 2px solid var(--terra);
   border-radius: 0 12px 12px 0;
   font-size: 0.85rem; line-height: 1.5;
@@ -481,7 +482,7 @@ section{ position: relative; }
 .bus-tip .quote{
   color: var(--terra-d); font-weight: 600;
   font-style: italic;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 24;
 }
 
@@ -524,7 +525,7 @@ section{ position: relative; }
   margin-bottom: 6px;
 }
 .check-time{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 72;
   font-size: 1.6rem;
   color: var(--espresso);
@@ -557,7 +558,7 @@ section{ position: relative; }
   font-size: 0.74rem; font-weight: 500;
   transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
-.wifi-copy:hover{ background: #2D1F18; }
+.wifi-copy:hover{ background: #26201E; }
 .wifi-copy:active{ transform: scale(0.96); }
 .wifi-copy.copied{ background: var(--sage); }
 .wifi-copy svg{ width: 11px; height: 11px; stroke: var(--paper); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -617,7 +618,7 @@ section{ position: relative; }
 .svc:hover .svc-icon{
   border-color: var(--sage-2);
   transform: rotate(-3deg) scale(1.04);
-  box-shadow: 0 10px 24px -10px rgba(110,130,83,0.4);
+  box-shadow: 0 10px 24px -10px rgba(110,92,87,0.4);
 }
 .svc:hover .svc-icon img{ transform: scale(1.06); }
 
@@ -642,7 +643,7 @@ section{ position: relative; }
   position: relative; z-index: 1;
 }
 .svc-name{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 72, 'SOFT' 30;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   line-height: 1.05;
@@ -674,7 +675,7 @@ section{ position: relative; }
 /* Refer note */
 .refer-note{
   margin-top: 22px;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 36, 'SOFT' 50;
   font-style: italic;
   font-size: 0.95rem;
@@ -694,33 +695,33 @@ section{ position: relative; }
 
 .reception-shell{
   background:
-    radial-gradient(60% 80% at 20% 20%, rgba(201,168,107,0.18) 0%, transparent 60%),
-    radial-gradient(60% 80% at 80% 80%, rgba(184,80,48,0.18) 0%, transparent 60%),
+    radial-gradient(60% 80% at 20% 20%, rgba(223,174,79,0.18) 0%, transparent 60%),
+    radial-gradient(60% 80% at 80% 80%, rgba(138,90,78,0.18) 0%, transparent 60%),
     var(--espresso);
-  border: 1px solid rgba(255,252,246,0.08);
+  border: 1px solid rgba(248,247,236,0.08);
   padding: 12px;
   border-radius: 36px;
   position: relative; overflow: hidden;
-  box-shadow: 0 40px 80px -40px rgba(31,20,16,0.5);
+  box-shadow: 0 40px 80px -40px rgba(43,33,30,0.5);
 }
 .reception-core{
-  background: rgba(255,252,246,0.03);
-  border: 1px solid rgba(255,252,246,0.06);
+  background: rgba(248,247,236,0.03);
+  border: 1px solid rgba(248,247,236,0.06);
   border-radius: calc(36px - 12px);
   padding: 40px 22px;
   text-align: center;
   position: relative;
-  box-shadow: inset 0 1px 0 rgba(255,252,246,0.06);
+  box-shadow: inset 0 1px 0 rgba(248,247,236,0.06);
 }
 @media (min-width: 720px){ .reception-core{ padding: 80px 56px; } }
 
 .reception-eyebrow{
   display: inline-flex; align-items: center; gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; color: rgba(255,252,246,0.6);
+  font-size: 10px; color: rgba(248,247,236,0.6);
   letter-spacing: 0.22em; text-transform: uppercase;
   padding: 6px 14px;
-  border: 1px solid rgba(255,252,246,0.14);
+  border: 1px solid rgba(248,247,236,0.14);
   border-radius: 999px;
   margin-bottom: 28px;
 }
@@ -729,7 +730,7 @@ section{ position: relative; }
   background: var(--gold); box-shadow: 0 0 12px var(--gold);
 }
 .reception h2{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-optical-sizing: auto;
   font-variation-settings: 'opsz' 144, 'SOFT' 30;
   font-weight: 400;
@@ -745,11 +746,11 @@ section{ position: relative; }
   font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;
 }
 .reception p{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 24, 'SOFT' 50;
   font-style: italic;
   font-size: 1.1rem; line-height: 1.5;
-  color: rgba(255,252,246,0.7);
+  color: rgba(248,247,236,0.7);
   max-width: 48ch; margin: 0 auto 36px;
   font-weight: 300;
 }
@@ -776,7 +777,7 @@ footer{
   }
 }
 .foot-brand{
-  font-family: 'Fraunces', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: 'opsz' 36;
   font-size: 1rem; color: var(--espresso);
   letter-spacing: -0.01em;
@@ -816,7 +817,47 @@ footer{
   .nav-links-desktop{ display: inline-flex; }
 }
 
-</style>
+
+    /* ═══ SEN DNA OVERLAY (shared shell — keep in sync across pages) ═══ */
+    :root {
+      --anchor:#4A3531; --anchor-deep:#33261F; --on-dark:#F2EDEA; --on-dark-soft:#D8CCC7;
+      --clay:#8A5A4E; --clay-deep:#70493F; --clay-soft:#A46B5D; --clay-l:#CDABA2; --clay-x:#F2E2DE;
+      --paper:#F2F3F4; --stone:#D6DADD; --moss:#557047; --gold:#DFAE4F; --gold-deep:#9A7420; --wa:#1B9E77;
+      --line-strong:rgba(38,32,30,0.18); --r-pill:999px;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+    }
+    body { font-family:'Hanken Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    h1,h2,h3,h4 { font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif; font-weight:800; letter-spacing:-0.02em; text-wrap:balance; }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--clay-deep); outline-offset:3px; border-radius:6px; }
+    /* nav — SEN spec */
+    #navbar { height:72px; padding:0 max(34px,env(safe-area-inset-left)); background:rgba(74,53,49,0.92);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.12);
+      transition:box-shadow 0.4s var(--ease); }
+    #navbar.scrolled { box-shadow:0 6px 22px rgba(38,32,30,0.35); }
+    .nav-logo { font-family:'Bricolage Grotesque',sans-serif !important; font-size:1.34rem; font-weight:800;
+      letter-spacing:-0.02em; color:#F2F3F4; display:flex; align-items:center; gap:9px; }
+    .nav-logo .peak { width:25px; height:25px; color:var(--clay-l); stroke:currentColor; fill:none; stroke-width:1.7; flex:0 0 auto; }
+    .nav-logo span { color:var(--clay-l); }
+    .nav-links { gap:26px; }
+    .nav-links a { font-size:0.92rem; font-weight:600; color:rgba(242,243,244,0.85); }
+    .nav-links a:hover { color:#fff; }
+    .nav-links a.active { color:var(--clay-l); }
+    .nav-cta { display:inline-flex; align-items:center; gap:7px; background:#F2F3F4 !important;
+      border:none !important; color:var(--clay-deep) !important; padding:10px 20px; border-radius:var(--r-pill);
+      font-weight:800; font-size:0.86rem; transition:background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background:#fff !important; transform:translateY(-2px); }
+    .nav-cta svg { width:15px; height:15px; fill:currentColor; }
+    .nav-hamburger { padding:8px; background:none; border:none; }
+    /* eyebrow → de-tracked (kills uppercase-tracked AI-slop cadence) */
+    .section-label { text-transform:none !important; letter-spacing:0 !important; font-weight:700 !important; font-size:0.92rem !important; }
+    /* reveal */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1 !important; transform:none !important; } }
+  
+    /* eyebrow de-track (sweep) */
+    .eyebrow { text-transform:none !important; letter-spacing:0 !important; }
+  </style>
 </head>
 <body>
 
@@ -828,7 +869,7 @@ footer{
   <nav class="nav" aria-label="Primary">
     <a href="index.html" class="nav-brand">Hoa An<span class="dot">·</span>Cao Bang</a>
     <div class="nav-links-desktop">
-      <a href="rooms.html">Rooms</a>
+      <a href="index.html">Home</a>
       <a href="motorbike.html">Motorbike</a>
       <a href="tours.html">Tours</a>
       <a href="food.html">Food</a>
@@ -871,9 +912,9 @@ footer{
   <div class="wrap">
 
     <div class="section-head">
-      <span class="eyebrow reveal">[ 01 ] &nbsp; Essential&nbsp;Information</span>
-      <h2 class="display reveal" data-d="1">Everything you need, <em>on the first night.</em></h2>
-      <p class="lede reveal" data-d="2">A pocket reference — address for your taxi, Wi-Fi password, check-in window, and the two phone numbers that always reach a real person.</p>
+      <span class="eyebrow reveal">Arriving today</span>
+      <h2 class="display reveal" data-d="1">Getting here, <em>the easy way.</em></h2>
+      <p class="lede reveal" data-d="2">Coming by bus? The address for your driver, the Wi-Fi, and numbers that reach a real person.</p>
     </div>
 
     <div class="bento">
@@ -885,8 +926,8 @@ footer{
             <span class="ic-tag">Address · Find us</span>
             <h3 class="ic-title">No. 381, De Tham 5 Residential Group<br><em>Thuc Phan Ward, Cao Bang.</em></h3>
             <div class="bus-tip">
-              <span class="label">If you arrive by bus</span>
-              Tell the driver to drop you at <span class="quote">"Hoà An Hotel, Km5 De Tham"</span> — every local driver in Cao Bang knows the spot.
+              <span class="label">Arriving by bus?</span>
+              Tell the driver: <span class="quote">"Hoà An Hotel, Km5 De Tham"</span>. Every local driver in Cao Bang knows it.
             </div>
             <div class="addr-actions">
               <a class="cta-pill" href="https://maps.app.goo.gl/5jb4L7BNKuPyUpYT8" target="_blank" rel="noopener">
@@ -900,25 +941,8 @@ footer{
         </div>
       </div>
 
-      <!-- Wifi -->
-      <div class="s-2 reveal" data-d="2">
-        <div class="card-shell">
-          <div class="card-core">
-            <span class="ic-tag">Wi-Fi · all networks</span>
-            <div class="wifi-key">
-              <span class="wifi-pass" id="wifiPass">hoaan3688</span>
-              <button class="wifi-copy" id="copyWifi" type="button" aria-label="Copy Wi-Fi password">
-                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-            <p class="ic-foot">Choose any "Hoa An" network nearby — same password works on all of them.</p>
-          </div>
-        </div>
-      </div>
-
       <!-- Hotline -->
-      <div class="s-3 reveal" data-d="3">
+      <div class="s-3 reveal" data-d="2">
         <div class="card-shell">
           <div class="card-core">
             <span class="ic-tag">Hotline · WhatsApp</span>
@@ -934,7 +958,24 @@ footer{
                 <span class="role">night shift</span>
               </a>
             </div>
-            <p class="ic-foot">Please call if the front door is closed when you arrive — we will come down within a minute.</p>
+            <p class="ic-foot">Door closed when you arrive? Call and we'll come down within a minute.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wifi -->
+      <div class="s-2 reveal" data-d="3">
+        <div class="card-shell">
+          <div class="card-core">
+            <span class="ic-tag">Wi-Fi · all networks</span>
+            <div class="wifi-key">
+              <span class="wifi-pass" id="wifiPass">hoaan3688</span>
+              <button class="wifi-copy" id="copyWifi" type="button" aria-label="Copy Wi-Fi password">
+                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <p class="ic-foot">Any "Hoa An" network nearby uses the same password.</p>
           </div>
         </div>
       </div>
@@ -948,7 +989,7 @@ footer{
               <div class="check-cell">
                 <span class="check-label">Arrival</span>
                 <div class="check-time"><span class="num">2:00</span><span class="meridian">PM</span></div>
-                <div class="check-meta">Early check-in 100,000&nbsp;₫ — availability permitting.</div>
+                <div class="check-meta">Early check-in 100,000&nbsp;₫, if available.</div>
               </div>
               <div class="check-cell">
                 <span class="check-label">Departure</span>
@@ -956,7 +997,7 @@ footer{
                 <div class="check-meta">Late check-out subject to availability.</div>
               </div>
             </div>
-            <p class="ic-foot">Arriving in the early morning? Book the night before to guarantee your room. Late arrivals (4–5 AM) are welcome — we'll be ready for you.</p>
+            <p class="ic-foot">Arriving 4–5 AM? Book the night before and we'll be ready.</p>
           </div>
         </div>
       </div>
@@ -970,9 +1011,9 @@ footer{
   <div class="wrap">
 
     <div class="section-head">
-      <span class="eyebrow reveal">[ 02 ] &nbsp; On-site &amp; on-call</span>
-      <h2 class="display reveal" data-d="1">Need assistance? <em>Just ask.</em></h2>
-      <p class="lede reveal" data-d="2">Nine of the things we handle directly for guests — from a same-day laundry to a custom Ban&nbsp;Gioc itinerary. Tap any card to open the dedicated page, or message reception.</p>
+      <span class="eyebrow reveal">On-site &amp; on-call</span>
+      <h2 class="display reveal" data-d="1">Need anything? <em>Just ask.</em></h2>
+      <p class="lede reveal" data-d="2">Nine things we handle for guests, from laundry to a custom Ban&nbsp;Gioc trip. Tap a card, or message reception.</p>
     </div>
 
     <div class="bento">
@@ -1086,7 +1127,7 @@ footer{
 
     </div>
 
-    <p class="refer-note reveal">— Tap any card above for the dedicated page with prices, photos and bookings —</p>
+    <p class="refer-note reveal">Tap any card for the full page with prices, photos and booking.</p>
   </div>
 </section>
 
@@ -1095,12 +1136,12 @@ footer{
   <div class="wrap">
     <div class="reception-shell reveal">
       <div class="reception-core">
-        <span class="reception-eyebrow">[ 03 ] &nbsp; Always on</span>
+        <span class="reception-eyebrow">Always on</span>
         <h2>
-          Please feel free to contact reception
+          Reception is here
           <br><em>for anything at all.</em>
         </h2>
-        <p>We are always happy to help — in English or Vietnamese, day or night.</p>
+        <p>English or Vietnamese, day or night. And once you're settled, plan the rest of your trip.</p>
         <div class="reception-ctas">
           <a class="cta-pill wa" href="https://wa.me/84941687931?text=Hi%20Luong.%20I%27m%20a%20guest%20at%20Hoa%20An%20Hotel%20and%20need%20some%20help." target="_blank" rel="noopener">
             <span>WhatsApp&nbsp;us</span>
@@ -1108,10 +1149,16 @@ footer{
               <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
             </span>
           </a>
-          <a class="cta-pill ghost" href="tel:+84941687931" style="background:rgba(255,252,246,0.08); color:var(--paper); border-color:rgba(255,252,246,0.16);">
+          <a class="cta-pill ghost" href="tel:+84941687931" style="background:rgba(248,247,236,0.08); color:var(--paper); border-color:rgba(248,247,236,0.16);">
             <span>Call +84&nbsp;941&nbsp;687&nbsp;931</span>
-            <span class="cta-icon" aria-hidden="true" style="background:rgba(255,252,246,0.14);">
+            <span class="cta-icon" aria-hidden="true" style="background:rgba(248,247,236,0.14);">
               <svg viewBox="0 0 24 24" style="stroke:var(--paper);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg>
+            </span>
+          </a>
+          <a class="cta-pill ghost" href="index.html" style="background:rgba(248,247,236,0.08); color:var(--paper); border-color:rgba(248,247,236,0.16);">
+            <span>Explore Cao&nbsp;Bang</span>
+            <span class="cta-icon" aria-hidden="true" style="background:rgba(248,247,236,0.14);">
+              <svg viewBox="0 0 24 24" style="stroke:var(--paper);"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
             </span>
           </a>
         </div>

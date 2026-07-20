@@ -682,13 +682,13 @@ async function exportItineraryImage(){
   const FOOTER_H = 120;
   const BODY_TOP = 44;
 
-  const COLORS = ['#B85030','#7D6347','#F4B860','#84a9d4','#885AB7'];
-  const C_BG = '#F0E8D5';
-  const C_GREEN = '#3D2E1E';
-  const C_ORANGE = '#B85030';
-  const C_TX = '#1a1a1a';
+  const COLORS = ['#875F56','#557047','#F4B860','#84a9d4','#885AB7'];
+  const C_BG = '#F1F0DC';
+  const C_GREEN = '#2E4026';
+  const C_ORANGE = '#875F56';
+  const C_TX = '#1F2A1A';
   const C_TM = '#777';
-  const C_LINE = 'rgba(61,46,30,0.12)';
+  const C_LINE = 'rgba(46,64,38,0.12)';
   const C_NIGHT = '#6B4FB8';
 
   // Stays section sizing
@@ -783,7 +783,7 @@ async function exportItineraryImage(){
   const line2 = titleParts.length > 1 ? titleParts[1].trim() : 'Itinerary';
 
   t(line1, W/2, 136, 'italic 700 64px "Cormorant Garamond", Georgia, serif', 'white', 'center');
-  t(line2, W/2, 204, 'italic 600 64px "Cormorant Garamond", Georgia, serif', '#FFD166', 'center');
+  t(line2, W/2, 204, 'italic 600 64px "Cormorant Garamond", Georgia, serif', '#FEDF9E', 'center');
 
   // ── Stats row — improved size & contrast ──
   const statItems = [
@@ -797,7 +797,7 @@ async function exportItineraryImage(){
   statItems.forEach((s,i)=>{
     const sx = sStartX + i*(sW+sGap);
     rr(sx, sY, sW, sH, sH/2, 'rgba(255,255,255,0.16)', null);
-    t(s.v, sx+sW/2, sY+21, '700 30px "DM Sans", system-ui, sans-serif', '#FFD166', 'center');
+    t(s.v, sx+sW/2, sY+21, '700 30px "DM Sans", system-ui, sans-serif', '#FEDF9E', 'center');
     t(s.l, sx+sW/2, sY+47, '600 15px "DM Sans", system-ui, sans-serif', 'rgba(255,255,255,0.65)', 'center');
   });
 
@@ -965,7 +965,7 @@ async function exportItineraryImage(){
   // ── Footer ──
   const fy = cy + 24;
   ctx.beginPath(); ctx.moveTo(PAD,fy); ctx.lineTo(W-PAD,fy);
-  ctx.strokeStyle='rgba(61,46,30,0.18)'; ctx.lineWidth=1; ctx.stroke();
+  ctx.strokeStyle='rgba(46,64,38,0.18)'; ctx.lineWidth=1; ctx.stroke();
 
   t('Send this plan to us for a quote', W/2, fy+36, `400 22px "DM Sans", system-ui, sans-serif`, C_TM, 'center');
   t('wa.me/84941687931', W/2, fy+70, `700 32px "DM Sans", system-ui, sans-serif`, C_ORANGE, 'center');

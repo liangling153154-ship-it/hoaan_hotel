@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Itinerary Builder · Internal Tool</title>
 <style>
-:root{--gd:#577249;--or:#C47A50;--cr:#F7F4ED;--gl:#E4ECDB;--tx:#1a1a1a;--tm:#666;--ln:#e0e0e0}
+:root{--gd:#6E5C57;--or:#8A5A4E;--cr:#F2F3F4;--gl:#E4E6E8;--tx:#26201E;--tm:#5C5F61;--ln:#e0e0e0}
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
 body{background:var(--cr);color:var(--tx);height:100vh;display:flex;flex-direction:column;overflow:hidden}
 
@@ -25,27 +25,27 @@ body{background:var(--cr);color:var(--tx);height:100vh;display:flex;flex-directi
 .lib-list{flex:1;overflow-y:auto}
 .lib-item{display:flex;align-items:center;gap:7px;padding:6px 8px;border-bottom:1px solid #f5f5f5;cursor:pointer;transition:background 0.12s;user-select:none}
 .lib-item:hover{background:var(--gl)}
-.lib-item.home-item{background:rgba(244,163,0,0.07)}
-.lib-item.home-item:hover{background:rgba(244,163,0,0.14)}
+.lib-item.home-item{background:rgba(223,174,79,0.07)}
+.lib-item.home-item:hover{background:rgba(223,174,79,0.14)}
 .lib-item img{width:34px;height:34px;border-radius:6px;object-fit:cover;background:#eee;flex-shrink:0}
 .li-info{flex:1;min-width:0}
 .li-name{font-size:0.76rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .li-km{font-size:0.65rem;color:var(--tm)}
-.li-add{width:20px;height:20px;border-radius:50%;background:rgba(87,114,73,0.12);color:var(--gd);font-size:0.85rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.li-add{width:20px;height:20px;border-radius:50%;background:rgba(110,92,87,0.12);color:var(--gd);font-size:0.85rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
 
 /* ── CENTER: BUILDER ── */
 .builder{display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .builder-bar{padding:8px 12px;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:7px;background:white;flex-shrink:0}
 .itin-name{border:1px solid var(--ln);border-radius:6px;padding:5px 9px;font-size:0.82rem;flex:1;min-width:0}
 .btn{display:inline-flex;align-items:center;gap:3px;padding:5px 10px;border-radius:6px;border:none;cursor:pointer;font-size:0.76rem;font-weight:500;white-space:nowrap}
-.btn-gd{background:var(--gd);color:white}.btn-gd:hover{background:#3D5232}
+.btn-gd{background:var(--gd);color:white}.btn-gd:hover{background:#4A3531}
 .btn-gy{background:#eee;color:#444}.btn-gy:hover{background:#ddd}
-.btn-or{background:var(--or);color:white}.btn-or:hover{background:#c25b3f}
+.btn-or{background:var(--or);color:white}.btn-or:hover{background:#8A5A4E}
 
 .days-scroll{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
 
 .day-card{background:white;border-radius:9px;border:2px solid transparent;overflow:hidden;cursor:pointer;transition:border-color 0.15s}
-.day-card.active{border-color:var(--active-color,#C47A50)}
+.day-card.active{border-color:var(--active-color,#8A5A4E)}
 .day-hd{display:flex;align-items:center;gap:7px;padding:7px 10px;color:white;font-size:0.82rem;font-weight:600;cursor:pointer;user-select:none}
 .day-hd .d-sub{font-size:0.68rem;font-weight:400;opacity:0.82}
 .day-hd .d-km{margin-left:auto;font-size:0.7rem;font-weight:400;opacity:0.85}
@@ -65,8 +65,8 @@ body{background:var(--cr);color:var(--tx);height:100vh;display:flex;flex-directi
 .stop-acts{display:flex;flex-direction:column;gap:2px;flex-shrink:0}
 .stop-acts button{background:#f0f0f0;border:none;border-radius:3px;width:20px;height:17px;cursor:pointer;font-size:0.62rem;color:#555;display:flex;align-items:center;justify-content:center}
 .stop-acts button:hover{background:#e0e0e0}
-.stop-acts button.srm{background:rgba(196,122,80,0.1);color:var(--or)}
-.stop-acts button.srm:hover{background:rgba(196,122,80,0.22)}
+.stop-acts button.srm{background:rgba(138,90,78,0.1);color:var(--or)}
+.stop-acts button.srm:hover{background:rgba(138,90,78,0.22)}
 .stop-acts button:disabled{opacity:0.28;cursor:default}
 
 .sum-bar{border-top:1px solid var(--ln);padding:5px 14px;font-size:0.73rem;color:var(--tm);display:flex;gap:14px;align-items:center;flex-shrink:0;background:white}
@@ -86,8 +86,8 @@ body{background:var(--cr);color:var(--tx);height:100vh;display:flex;flex-directi
 .out-section label{display:block;font-size:0.68rem;font-weight:700;color:var(--gd);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
 .out-section textarea{width:100%;border:1px solid var(--ln);border-radius:6px;font-family:monospace;font-size:0.66rem;padding:6px;resize:vertical}
 .copy-btn{width:100%;padding:5px;border:none;border-radius:6px;background:var(--gd);color:white;cursor:pointer;font-size:0.75rem;margin-top:4px}
-.copy-btn:hover{background:#3D5232}
-.copy-btn.copied{background:#7A9468}
+.copy-btn:hover{background:#4A3531}
+.copy-btn.copied{background:#A08E88}
 </style>
 </head>
 <body>
@@ -160,7 +160,7 @@ let KM      = {};
 let days      = [{ stops: [] }]; // stops: [{id, note}]
 let activeDay = 0;
 
-const COLORS = ['#C47A50','#577249','#264653','#E9C46A','#8338EC','#3A86FF','#06D6A0'];
+const COLORS = ['#8A5A4E','#6E5C57','#264653','#E9C46A','#8338EC','#3A86FF','#06D6A0'];
 
 // ── LOAD from itinerary-v2-data.js ────────────────────────────────────────────
 async function loadData(){
@@ -183,7 +183,7 @@ async function loadData(){
     el.style.background = 'rgba(255,255,255,0.18)';
   } catch(e) {
     el.textContent = '⚠ Cần chạy qua Live Server (VS Code → Go Live)';
-    el.style.background = 'rgba(255,100,0,0.35)';
+    el.style.background = 'rgba(138,90,78,0.35)';
   }
   buildLib();
   render();

@@ -1,6 +1,9 @@
 .agents/
 .claude/
 
+# Temporary AI/asset uploads — not part of the site
+User gui AI (temporary)/
+
 .DS_Store
 Thumbs.db
 desktop.ini

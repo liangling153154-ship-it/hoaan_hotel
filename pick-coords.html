@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pick Coordinates · Cao Bang Map (Internal Tool)</title>
 <style>
-  :root{ --gd:#3D2E1E; --or:#B85030; --cr:#F0E8D5; --line:#ddd; }
+  :root{ --gd:#4A3531; --or:#8A5A4E; --cr:#F2F3F4; --line:#ddd; }
   *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
-  body{background:var(--cr);padding:20px;color:#1a1a1a}
+  body{background:var(--cr);padding:20px;color:#26201E}
   h1{color:var(--gd);margin-bottom:8px;font-size:1.4rem}
-  .subtitle{color:#666;font-size:0.88rem;margin-bottom:16px}
+  .subtitle{color:#5C5F61;font-size:0.88rem;margin-bottom:16px}
   .layout{display:grid;grid-template-columns:1fr 360px;gap:16px;max-width:1400px;margin:0 auto}
   .map-wrap{background:white;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
-  .map-info{padding:10px 14px;background:#f5f1e6;border-bottom:1px solid var(--line);font-size:0.82rem;color:#555;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .map-info{padding:10px 14px;background:#F2F3F4;border-bottom:1px solid var(--line);font-size:0.82rem;color:#555;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
   #cursor-pos{font-family:monospace;color:var(--gd);font-weight:600}
   .svg-stage{position:relative;background:#eee}
   svg{display:block;width:100%;height:auto;cursor:crosshair}
@@ -22,17 +22,17 @@
   .zoom-ctrl button{width:36px;height:36px;border-radius:6px;background:white;color:#333;border:1px solid #ccc;font-size:1.1rem;line-height:1;box-shadow:0 2px 6px rgba(0,0,0,0.1);cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center}
   .zoom-ctrl button:hover{background:var(--cr)}
   .zoom-ctrl button.small{font-size:0.7rem;font-weight:600}
-  .zoom-level{font-family:monospace;color:#666;font-size:0.78rem}
+  .zoom-level{font-family:monospace;color:#5C5F61;font-size:0.78rem}
   .existing{fill:#888;opacity:0.5}
   .existing-label{font-size:9px;fill:#444;opacity:0.7;pointer-events:none}
   .picked{fill:var(--or);stroke:white;stroke-width:2}
-  .picked-label{font-size:11px;fill:#1a1a1a;font-weight:700;pointer-events:none}
+  .picked-label{font-size:11px;fill:#26201E;font-weight:700;pointer-events:none}
 
   .panel{background:white;border:1px solid var(--line);border-radius:10px;padding:14px;height:fit-content;position:sticky;top:20px}
   .panel h2{font-size:1rem;color:var(--gd);margin-bottom:10px}
   .controls{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
   button{background:var(--gd);color:white;border:none;padding:7px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem}
-  button:hover{background:#2A1E10}
+  button:hover{background:#3A2B27}
   button.secondary{background:#888}
   button.danger{background:var(--or)}
   .toggle{display:flex;align-items:center;gap:6px;font-size:0.82rem;margin-bottom:10px}
@@ -48,7 +48,7 @@
   .row .rm{background:none;color:#c00;font-size:1rem;padding:0;border:none;cursor:pointer}
 
   .output{margin-top:12px}
-  .output label{display:block;font-size:0.75rem;color:#666;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+  .output label{display:block;font-size:0.75rem;color:#5C5F61;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
   textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;font-family:monospace;font-size:0.74rem;background:#fafafa;resize:vertical;min-height:80px}
   .hint{font-size:0.74rem;color:#888;margin-top:6px;line-height:1.5}
 </style>

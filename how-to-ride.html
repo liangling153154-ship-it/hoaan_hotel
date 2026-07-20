@@ -5,31 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>How to Ride a Semi-Auto Bike · Hoa An Hotel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --gd:#3D2E1E;--gm:#7D6347;--gl:#D8C9A8;
-      --or:#B85030;--od:#9A3E22;--cr:#F0E8D5;
-      --brown:#1A1208;--tx:#1a1a1a;--tm:#666;
+      --gd:#4A3531;--gm:#6E5C57;--gl:#D6DADD;
+      --or:#8A5A4E;--od:#70493F;--cr:#F2F3F4;
+      --brown:#26201E;--tx:#26201E;--tm:#5C5F61;
       --r:14px;--sh:0 4px 24px rgba(0,0,0,0.09);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden}
+    body{font-family:'Hanken Grotesk', sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(247,244,237,0.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(61,46,30,0.12)}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gd);font-weight:700;white-space:nowrap}
-    .nav-logo span{color:var(--or)}
+    #navbar {position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(74,53,49,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.1)}
+    .nav-logo{font-family:'Bricolage Grotesque', sans-serif;font-size:1.15rem;color:#F2F3F4;font-weight:700;white-space:nowrap}
+    .nav-logo span{color:#CDABA2}
     .nav-links{display:flex;gap:28px;align-items:center}
-    .nav-links a{font-size:0.88rem;font-weight:500;color:var(--brown)}
-    .nav-links a:hover{color:var(--gd)}
+    .nav-links a{font-size:0.88rem;font-weight:500;color:rgba(242,243,244,0.85)}
+    .nav-links a:hover{color:#FFFFFF}
     .nav-links.open{display:flex!important}
-    .nav-cta{background:var(--or);color:white!important;padding:9px 20px;border-radius:50px;font-size:0.85rem}
+    .nav-cta{background:#F2F3F4;color:var(--gd)!important;padding:9px 20px;border-radius:50px;font-size:0.85rem}
     .ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
-    .ham span{width:24px;height:2px;background:var(--gd);border-radius:2px}
+    .ham span{width:24px;height:2px;background:#F2F3F4;border-radius:2px}
 
     /* PAGE */
     .pg{max-width:760px;margin:0 auto;padding:100px 24px 80px}
@@ -40,7 +41,7 @@
     .back:hover{color:var(--gd)}
     .eyebrow{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-bottom:10px;display:flex;align-items:center;gap:8px}
     .eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gm);flex-shrink:0}
-    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);color:var(--gd);line-height:1.05;margin-bottom:12px}
+    h1{font-family:'Bricolage Grotesque', sans-serif;font-size:clamp(2rem,5vw,3rem);color:var(--gd);line-height:1.05;margin-bottom:12px}
     h1 em{font-style:italic;color:var(--or)}
     .subtitle{font-size:1rem;color:var(--tm);line-height:1.6}
     .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
@@ -49,27 +50,27 @@
     /* STEP */
     .step{margin-bottom:56px}
     .step-label{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-    .step-num{width:36px;height:36px;border-radius:50%;background:var(--gd);color:white;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .step-label h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gd)}
+    .step-num{width:36px;height:36px;border-radius:50%;background:var(--gd);color:white;font-family:'Bricolage Grotesque', sans-serif;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step-label h2{font-family:'Bricolage Grotesque', sans-serif;font-size:1.5rem;color:var(--gd)}
     .step-label p{font-size:0.82rem;color:var(--tm);margin-top:2px}
 
     /* IMAGE */
     .img-block{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:24px}
     .img-block img{width:100%;height:auto}
-    .img-cap{font-size:0.78rem;color:var(--tm);text-align:center;padding:10px 16px;background:white;border-top:1px solid rgba(61,46,30,0.08)}
+    .img-cap{font-size:0.78rem;color:var(--tm);text-align:center;padding:10px 16px;background:white;border-top:1px solid rgba(74,53,49,0.08)}
 
     /* GRID 2 col */
     .img-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 
     /* CONTROLS LIST */
     .controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-    .ctrl{background:white;border-radius:11px;padding:16px 18px;border-left:4px solid var(--gm)}
-    .ctrl.danger{border-left-color:var(--or)}
+    .ctrl{background:rgba(85,112,71,0.07);border:1px solid rgba(85,112,71,0.28);border-radius:11px;padding:16px 18px}
+    .ctrl.danger{background:rgba(138,90,78,0.07);border-color:rgba(138,90,78,0.3)}
     .ctrl h4{font-size:0.9rem;font-weight:600;color:var(--gd);margin-bottom:6px}
     .ctrl p{font-size:0.82rem;color:var(--tm);line-height:1.55}
 
     /* WARNING BOX */
-    .warn{background:rgba(184,80,48,0.08);border:1.5px solid rgba(184,80,48,0.3);border-radius:11px;padding:16px 18px;display:flex;gap:12px;margin-bottom:24px}
+    .warn{background:rgba(138,90,78,0.08);border:1.5px solid rgba(138,90,78,0.3);border-radius:11px;padding:16px 18px;display:flex;gap:12px;margin-bottom:24px}
     .warn-icon{font-size:1.4rem;flex-shrink:0;line-height:1}
     .warn h4{font-size:0.88rem;font-weight:600;color:var(--od);margin-bottom:4px}
     .warn p{font-size:0.82rem;color:var(--tm);line-height:1.55}
@@ -87,7 +88,7 @@
     /* GEAR TABLE */
     .gear-table{width:100%;border-collapse:collapse;background:white;border-radius:11px;overflow:hidden;box-shadow:var(--sh);margin-bottom:28px;font-size:0.84rem}
     .gear-table th{background:var(--gd);color:white;padding:10px 14px;text-align:left;font-weight:600;font-size:0.78rem;letter-spacing:0.5px}
-    .gear-table td{padding:10px 14px;border-bottom:1px solid rgba(61,46,30,0.08);color:var(--tx);vertical-align:middle}
+    .gear-table td{padding:10px 14px;border-bottom:1px solid rgba(74,53,49,0.08);color:var(--tx);vertical-align:middle}
     .gear-table tr:last-child td{border-bottom:none}
     .gear-table tr:hover td{background:var(--gl)}
     .g-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--gd);color:white;font-weight:700;font-size:0.82rem}
@@ -100,21 +101,21 @@
     .tip strong{color:var(--tx)}
 
     /* DIVIDER */
-    hr{border:none;border-top:1px solid rgba(61,46,30,0.12);margin:48px 0}
+    hr{border:none;border-top:1px solid rgba(74,53,49,0.12);margin:48px 0}
 
     /* CTA */
     .cta{background:var(--gd);border-radius:var(--r);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px}
-    .cta h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;margin-bottom:4px}
+    .cta h3{font-family:'Bricolage Grotesque', sans-serif;font-size:1.3rem;color:white;margin-bottom:4px}
     .cta p{font-size:0.82rem;color:rgba(255,255,255,0.65)}
-    .btn-wa{background:#25D366;color:white;padding:11px 22px;border-radius:50px;font-size:0.84rem;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+    .btn-wa{background:#1B9E77;color:white;padding:11px 22px;border-radius:50px;font-size:0.84rem;font-weight:500;display:inline-flex;align-items:center;gap:6px}
     .btn-back{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:white;padding:11px 22px;border-radius:50px;font-size:0.84rem}
 
-    .waf{position:fixed;bottom:22px;right:22px;width:50px;height:50px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:99}
+    .waf{position:fixed;bottom:22px;right:22px;width:50px;height:50px;background:#1B9E77;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(27,158,119,0.4);z-index:99}
     .waf svg{width:22px;fill:white}
 
     @media(max-width:700px){
-      nav{padding:14px 16px}
-      .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(247,244,237,0.98);padding:16px;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+      #navbar {padding:14px 16px}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#4A3531;padding:16px;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,0.3)}
       .ham{display:flex}
       .pg{padding:84px 16px 60px}
       .controls{grid-template-columns:1fr}
@@ -126,12 +127,55 @@
       .tips{grid-template-columns:1fr}
       .cta{padding:20px}
     }
+  
+    /* ═══ SEN DNA OVERLAY (shared shell — keep in sync across pages) ═══ */
+    :root {
+      --anchor:#4A3531; --anchor-deep:#33261F; --on-dark:#F2EDEA; --on-dark-soft:#D8CCC7;
+      --clay:#8A5A4E; --clay-deep:#70493F; --clay-soft:#A46B5D; --clay-l:#CDABA2; --clay-x:#F2E2DE;
+      --paper:#F2F3F4; --stone:#D6DADD; --moss:#557047; --gold:#DFAE4F; --gold-deep:#9A7420; --wa:#1B9E77;
+      --line-strong:rgba(38,32,30,0.18); --r-pill:999px;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+    }
+    body { font-family:'Hanken Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    h1,h2,h3,h4 { font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif; font-weight:800; letter-spacing:-0.02em; text-wrap:balance; }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--clay-deep); outline-offset:3px; border-radius:6px; }
+    /* nav — SEN spec */
+    #navbar { height:72px; padding:0 max(34px,env(safe-area-inset-left)); background:rgba(74,53,49,0.92);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.12);
+      transition:box-shadow 0.4s var(--ease); }
+    #navbar.scrolled { box-shadow:0 6px 22px rgba(38,32,30,0.35); }
+    .nav-logo { font-family:'Bricolage Grotesque',sans-serif !important; font-size:1.34rem; font-weight:800;
+      letter-spacing:-0.02em; color:#F2F3F4; display:flex; align-items:center; gap:9px; }
+    .nav-logo .peak { width:25px; height:25px; color:var(--clay-l); stroke:currentColor; fill:none; stroke-width:1.7; flex:0 0 auto; }
+    .nav-logo span { color:var(--clay-l); }
+    .nav-links { gap:26px; }
+    .nav-links a { font-size:0.92rem; font-weight:600; color:rgba(242,243,244,0.85); }
+    .nav-links a:hover { color:#fff; }
+    .nav-links a.active { color:var(--clay-l); }
+    .nav-cta { display:inline-flex; align-items:center; gap:7px; background:#F2F3F4 !important;
+      border:none !important; color:var(--clay-deep) !important; padding:10px 20px; border-radius:var(--r-pill);
+      font-weight:800; font-size:0.86rem; transition:background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background:#fff !important; transform:translateY(-2px); }
+    .nav-cta svg { width:15px; height:15px; fill:currentColor; }
+    .nav-hamburger { padding:8px; background:none; border:none; }
+    /* eyebrow → de-tracked (kills uppercase-tracked AI-slop cadence) */
+    .section-label { text-transform:none !important; letter-spacing:0 !important; font-weight:700 !important; font-size:0.92rem !important; }
+    /* reveal */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1 !important; transform:none !important; } }
+  
+    /* eyebrow de-track (sweep) */
+    .eyebrow { text-transform:none !important; letter-spacing:0 !important; }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Hoa An Hotel</a>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <svg class="peak" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19L9.5 7l4 7 2.5-4L21 19z"/><path d="M9.5 7l2 3.6" stroke-width="1.5"/></svg>
+    Hoa An Hotel
+  </a>
   <div class="nav-links" id="navLinks">
     <a href="rooms.html">Rooms</a>
     <a href="motorbike.html">Motorbike</a>
@@ -141,7 +185,10 @@
     <a href="itinerary.html">Plan Trip</a>
     <a href="bus-ticket.html">Bus Tickets</a>
 
-    <a href="https://wa.me/84941687931" class="nav-cta" target="_blank">💬 WhatsApp</a>
+    <a href="https://wa.me/84941687931" class="nav-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
   </div>
   <div class="ham" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -366,8 +413,8 @@
 
 </div>
 
-<footer style="background:#0f2419;color:rgba(255,255,255,0.4);text-align:center;padding:18px;font-size:0.76rem;font-family:'DM Sans',sans-serif">
-  <p>© 2025 Hoa An Hotel · Cao Bang &nbsp;·&nbsp; <a href="https://wa.me/84941687931" style="color:#7D6347;text-decoration:none">WhatsApp</a> &nbsp;·&nbsp; Made with ❤️ in Cao Bang</p>
+<footer style="background:#241B18;color:rgba(255,255,255,0.4);text-align:center;padding:18px;font-size:0.76rem;font-family:'Hanken Grotesk', sans-serif">
+  <p>© 2025 Hoa An Hotel · Cao Bang &nbsp;·&nbsp; <a href="https://wa.me/84941687931" style="color:#6E5C57;text-decoration:none">WhatsApp</a> &nbsp;·&nbsp; Made with ❤️ in Cao Bang</p>
 </footer>
 
 <a href="https://wa.me/84941687931" class="waf" target="_blank">
