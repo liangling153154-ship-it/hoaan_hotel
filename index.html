@@ -6,6 +6,13 @@
   <meta name="theme-color" content="#4A3531"/>
   <meta name="description" content="Hoa An Hotel – your highland base in Cao Bang. Rooms, motorbike rental, tours, food guide and bus tickets. Book direct on WhatsApp."/>
   <title>Hoa An Hotel · Cao Bang, Vietnam</title>
+  <script>
+    /* first-visit intro: decide before paint so returning guests never see a flash */
+    (function () {
+      var d = document.documentElement; d.classList.add('js');
+      try { if (localStorage.getItem('hoaan_intro_v1')) d.classList.add('intro-seen'); } catch (e) { d.classList.add('intro-seen'); }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,6 +53,16 @@
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
       --z-base: 1; --z-raised: 10; --z-sticky: 100; --z-float: 200; --z-nav: 300; --z-overlay: 400;
       --maxw: 1140px;
+      /* iOS home-screen icons · saturated brand-family fills (white glyph ≥3:1), each tied to a meaning */
+      --i-clay:     #A0604F;   /* stay · riding know-how */
+      --i-moss:     #4F7A3F;   /* ride · plan */
+      --i-sky:      #2E78A0;   /* places · map · roads */
+      --i-gold:     #B37A17;   /* food · tickets · reviews */
+      --i-graphite: #5E636B;   /* in-house services */
+      --i-wa:       #1B9E77;   /* WhatsApp — protected */
+      --icon: 76px; --app-col: calc(var(--icon) + 16px);
+      --font-ios: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hanken Grotesk", system-ui, sans-serif;
+      --tap: 150ms; --app-in: 320ms;
     }
 
     /* ── BASE ── */
@@ -142,52 +159,164 @@
     }
     .link-btn:hover { transform:translateY(-2px); gap:11px; }
 
-    /* ── HERO (photo, scrim, left-aligned display) ── */
+    /* ── HERO · iOS HOME SCREEN (Cao Bang wallpaper · app icons · dock) ── */
     #hero {
       position:relative; min-height:100dvh;
-      display:flex; align-items:flex-end;
-      padding:120px 0 88px;
-      overflow:hidden;
+      display:flex; flex-direction:column;
+      padding:96px 0 calc(24px + env(safe-area-inset-bottom));
+      overflow:hidden; isolation:isolate;
     }
     .hero-bg { position:absolute; inset:0; z-index:0; }
-    .hero-bg img { width:100%; height:100%; object-fit:cover; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; filter:blur(3px) saturate(1.05); transform:scale(1.04); }
+    /* soft frosted veil: dims the busy photo centre so the icon grid reads first */
+    .hero-bg .hero-veil {
+      position:absolute; inset:0; z-index:1;
+      background:radial-gradient(ellipse 70% 55% at 50% 52%, rgba(14,12,10,0.34) 0%, rgba(14,12,10,0.12) 70%, rgba(14,12,10,0) 100%);
+      backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+    }
     .hero-bg::after {
       content:''; position:absolute; inset:0;
-      background:
-        linear-gradient(180deg, rgba(24,20,14,0.40) 0%, rgba(24,20,14,0) 50%, rgba(24,20,14,0.34) 100%),
-        linear-gradient(90deg,  rgba(24,20,14,0.50) 0%, rgba(24,20,14,0.12) 55%, transparent 100%);
+      background:linear-gradient(180deg, rgba(14,12,10,0.56) 0%, rgba(14,12,10,0.30) 32%, rgba(14,12,10,0.36) 68%, rgba(14,12,10,0.62) 100%);
     }
-    .hero-bg::before {
-      content:''; position:absolute; left:0; right:0; bottom:0; height:16%; z-index:1;
-      background:linear-gradient(180deg, rgba(242,243,244,0) 0%, rgba(242,243,244,0.65) 62%, var(--paper) 100%);
+    .hero-inner {
+      position:relative; z-index:2; width:100%; flex:1;
+      display:flex; flex-direction:column; gap:32px;
     }
-    .hero-inner { position:relative; z-index:2; width:100%; }
+    .home-head { text-align:center; }
     .hero-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(20,15,10,0.72); border:1px solid rgba(255,255,255,0.25);
-      color:rgba(255,255,255,0.95); font-size:0.78rem; font-weight:600;
-      padding:8px 16px; border-radius:var(--r-pill); margin-bottom:22px;
-      backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+      display:inline-flex; align-items:center; gap:8px; margin-bottom:12px;
+      background:rgba(20,15,10,0.48); border:1px solid rgba(255,255,255,0.22);
+      color:#fff; font-size:0.78rem; font-weight:600;
+      padding:6px 14px; border-radius:var(--r-pill);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     }
-    .hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--clay-l); box-shadow:0 0 8px rgba(203,167,158,0.8); }
+    .hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--clay-l); }
     #hero h1 {
-      font-size:clamp(2.7rem, 7.8vw, 5.6rem); font-weight:800; line-height:1.0;
-      color:#fff; max-width:13ch;
-      paint-order:stroke fill; -webkit-text-stroke:1.4px rgba(16,12,6,0.55);
-      text-shadow:0 1px 2px rgba(16,12,6,0.6), 0 2px 8px rgba(16,12,6,0.55), 0 6px 28px rgba(16,12,6,0.45);
-      margin-bottom:18px;
+      font-size:clamp(1.75rem, 6.4vw, 3rem); line-height:1.05; color:#fff;
+      max-width:18ch; margin:0 auto;
+      text-shadow:0 1px 2px rgba(0,0,0,0.4), 0 4px 18px rgba(0,0,0,0.4);
     }
-    #hero h1 .accent { color:#EFC9BC; -webkit-text-stroke-color:rgba(60,25,12,0.55); }
+    #hero h1 .accent { color:#EFC9BC; }
     .hero-sub {
-      font-size:1.1rem; font-weight:600; color:rgba(255,255,255,0.97); max-width:44ch;
-      text-shadow:0 1px 3px rgba(16,12,6,0.7), 0 2px 12px rgba(16,12,6,0.5);
-      margin-bottom:30px;
+      display:none; margin:12px auto 0; max-width:44ch;
+      font-size:1.0625rem; font-weight:500; color:rgba(255,255,255,0.94);
+      text-shadow:0 1px 6px rgba(0,0,0,0.55);
     }
-    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-    @media (max-width:600px) {
-      #hero { padding:104px 0 64px; }
-      .hero-btns .btn { flex:1 1 100%; min-height:50px; }
+
+    /* app grid: icon and label are two separate blocks, like the iPhone home screen */
+    .apps {
+      list-style:none; width:100%; margin:0 auto; justify-content:center;
+      display:grid; grid-template-columns:repeat(3, minmax(0, var(--app-col)));
+      row-gap:16px; column-gap:12px;
     }
+    .apps > li { min-width:0; display:flex; justify-content:center; }
+    .app {
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      min-width:0; max-width:100%; padding:4px 0;
+      color:#fff; text-decoration:none;
+      animation:appIn var(--app-in) var(--ease) both;
+      animation-delay:calc(var(--i, 0) * 40ms);
+    }
+    .app-icon {
+      --c:var(--i-graphite);
+      display:grid; place-items:center; flex:none;
+      width:var(--icon); height:var(--icon); border-radius:calc(var(--icon) * 0.225);
+      background-color:var(--c);
+      background-image:linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 62%);
+      box-shadow:0 4px 12px rgba(0,0,0,0.28), inset 0 0 0 0.5px rgba(255,255,255,0.2);
+      transition:transform var(--tap) var(--ease);
+    }
+    .app-icon.has-img { overflow:hidden; background-image:none; }
+    .app-icon img { display:block; width:100%; height:100%; border-radius:inherit; }
+    .app-icon svg { width:52%; height:52%; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .app-label {
+      display:block; max-width:100%;
+      font-family:var(--font-ios); font-size:0.8125rem; font-weight:500; line-height:1.25; letter-spacing:-0.01em;
+      color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.6); white-space:nowrap;
+    }
+    .app.clay .app-icon     { --c:var(--i-clay); }
+    .app.moss .app-icon     { --c:var(--i-moss); }
+    .app.sky .app-icon      { --c:var(--i-sky); }
+    .app.gold .app-icon     { --c:var(--i-gold); }
+    .app.graphite .app-icon { --c:var(--i-graphite); }
+    .app.wa .app-icon       { --c:var(--i-wa); }
+    .app:active .app-icon { transform:scale(0.92); }
+    @media (hover:hover) { .app:hover .app-icon { transform:translateY(-2px); } }
+    .app:focus-visible { outline:none; }
+    .app:focus-visible .app-icon { outline:3px solid #fff; outline-offset:3px; }
+    @keyframes appIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:none; } }
+
+    /* dock: the two ways to reach us, pinned to the bottom of the first screen */
+    .dock {
+      margin-top:auto; align-self:center;
+      display:flex; gap:20px; padding:12px 24px;
+      border-radius:32px;
+      background:rgba(255,255,255,0.20); border:1px solid rgba(255,255,255,0.24);
+      backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    }
+    .dock .app { padding:0; }
+
+    @media (max-width:600px) { #hero .wrap { padding:0 16px; } }
+    @media (max-width:359px) { :root { --icon:66px; } .apps { column-gap:8px; row-gap:12px; } .app-label { font-size:0.75rem; } }
+    @media (min-width:768px) {
+      :root { --icon:84px; }
+      #hero { padding:112px 0 32px; }
+      .hero-sub { display:block; }
+      .apps { grid-template-columns:repeat(4, minmax(0, var(--app-col))); row-gap:20px; column-gap:16px; }
+      .app-label { font-size:0.875rem; }
+    }
+    @media (min-width:1024px) {
+      :root { --icon:88px; }
+      .hero-inner { gap:40px; }
+      .apps { grid-template-columns:repeat(6, minmax(0, var(--app-col))); row-gap:24px; column-gap:20px; }
+    }
+
+    /* ── FIRST-VISIT INTRO · liquid-metal welcome (shown once per device) ── */
+    #intro { display:none; }
+    .js:not(.intro-seen) #intro {
+      position:fixed; inset:0; z-index:calc(var(--z-overlay) + 10);
+      display:grid; place-items:center; padding:24px;
+      color:#fff; text-align:center; isolation:isolate;
+    }
+    .js:not(.intro-seen) body { overflow:hidden; }
+    .js:not(.intro-seen) .app { animation-play-state:paused; }
+    .intro-bg { position:absolute; inset:0; z-index:-1; overflow:hidden; background:var(--anchor-deep); }
+    .intro-bg img { width:100%; height:100%; object-fit:cover; filter:blur(14px) saturate(1.1); transform:scale(1.12); }
+    .intro-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,12,10,0.52), rgba(14,12,10,0.72)); }
+    .intro-card { display:grid; justify-items:center; gap:16px; max-width:30rem; animation:introIn 400ms var(--ease) both; }
+    .intro-peak { width:48px; height:48px; color:var(--clay-l); fill:none; stroke:currentColor; stroke-width:1.6; stroke-linejoin:round; }
+    .intro-kicker { font-size:0.875rem; font-weight:600; color:rgba(255,255,255,0.88); letter-spacing:0.01em; }
+    .intro-title { font-size:clamp(2.25rem, 9vw, 3.5rem); line-height:1; color:#fff; text-shadow:0 2px 18px rgba(0,0,0,0.4); }
+    .intro-sub { font-size:1rem; font-weight:500; line-height:1.5; color:rgba(255,255,255,0.9); max-width:28ch; margin-bottom:8px; }
+    .intro-hint { font-size:0.8125rem; color:rgba(255,255,255,0.72); }
+    #intro.leaving { animation:introOut 260ms cubic-bezier(0.4,0,1,1) forwards; pointer-events:none; }
+    @keyframes introIn { from { opacity:0; transform:translateY(12px) scale(0.98); } to { opacity:1; transform:none; } }
+    @keyframes introOut { to { opacity:0; transform:scale(1.03); } }
+
+    /* liquid-metal pill button (vanilla port of the LiquidMetalButton component) */
+    .lm-btn {
+      --lm-w:216px; --lm-h:52px;
+      position:relative; display:inline-grid; place-items:center;
+      width:var(--lm-w); height:var(--lm-h); padding:0; border:0; border-radius:999px;
+      background:conic-gradient(from 200deg, #f4f4f4, #8d8d8d, #ffffff, #6f6f6f, #e9e9e9, #9a9a9a, #f4f4f4); /* static metal if WebGL is off */
+      cursor:pointer; isolation:isolate;
+      box-shadow:0 0 0 1px rgba(0,0,0,0.3), 0 20px 12px rgba(0,0,0,0.08), 0 9px 9px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.15);
+      transition:transform var(--tap) var(--ease), box-shadow var(--tap) var(--ease);
+    }
+    .lm-shader { position:absolute; inset:0; z-index:0; border-radius:inherit; overflow:hidden; }
+    .lm-shader canvas { position:absolute; inset:0; width:100% !important; height:100% !important; display:block; border-radius:inherit; }
+    .lm-inner { position:absolute; inset:2px; z-index:1; border-radius:inherit; background:linear-gradient(180deg, #202020 0%, #000 100%); transition:box-shadow var(--tap); }
+    .lm-label { position:relative; z-index:2; font-family:var(--font-ios); font-size:0.9375rem; font-weight:600; letter-spacing:0.01em; color:#EDEDED; text-shadow:0 1px 2px rgba(0,0,0,0.5); white-space:nowrap; pointer-events:none; }
+    .lm-ripple {
+      position:absolute; z-index:3; width:20px; height:20px; border-radius:50%; pointer-events:none;
+      background:radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+      animation:lmRipple 600ms ease-out forwards;
+    }
+    @keyframes lmRipple { from { transform:translate(-50%,-50%) scale(0); opacity:0.6; } to { transform:translate(-50%,-50%) scale(4); opacity:0; } }
+    @media (hover:hover) { .lm-btn:hover { box-shadow:0 0 0 1px rgba(0,0,0,0.4), 0 12px 6px rgba(0,0,0,0.05), 0 8px 5px rgba(0,0,0,0.1), 0 4px 4px rgba(0,0,0,0.15); } }
+    .lm-btn:active { transform:translateY(1px) scale(0.98); }
+    .lm-btn:active .lm-inner { box-shadow:inset 0 2px 4px rgba(0,0,0,0.4); }
+    .lm-btn:focus-visible { outline:3px solid #fff; outline-offset:4px; border-radius:999px; }
 
     /* ── SECTION SHELL ── */
     .section-pad { padding:96px 0; }
@@ -361,10 +490,28 @@
     @media (prefers-reduced-motion: reduce) {
       *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
       .reveal { opacity:1!important; transform:none!important; }
+      .app { animation:none!important; }
+      .intro-card, #intro.leaving { animation:none!important; }
     }
   </style>
 </head>
 <body>
+
+<div id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle" data-od-id="intro-welcome">
+  <div class="intro-bg" aria-hidden="true"><img src="images/hero/hero-main.jpg" alt=""></div>
+  <div class="intro-card">
+    <svg class="intro-peak" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19L9.5 7l4 7 2.5-4L21 19z"/><path d="M9.5 7l2 3.6"/></svg>
+    <p class="intro-kicker">Cao Bang · Northern Vietnam</p>
+    <h2 class="intro-title" id="introTitle">Hoa An Hotel</h2>
+    <p class="intro-sub">Rooms, bikes, tours and local know-how. All in one place.</p>
+    <button class="lm-btn" id="introEnter" type="button" data-od-id="intro-enter">
+      <span class="lm-shader" id="lmShader" aria-hidden="true"></span>
+      <span class="lm-inner" aria-hidden="true"></span>
+      <span class="lm-label">Start exploring</span>
+    </button>
+    <p class="intro-hint">Shown on your first visit only</p>
+  </div>
+</div>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -395,18 +542,64 @@
 <section id="hero" aria-label="Hoa An Hotel, Cao Bang">
   <div class="hero-bg" aria-hidden="true">
     <img src="images/hero/hero-main.jpg" alt="" fetchpriority="high">
+    <span class="hero-veil"></span>
   </div>
   <div class="hero-inner wrap">
-    <div class="hero-badge"><span class="dot" aria-hidden="true"></span> Cao Bang · Northern Vietnam</div>
-    <h1>Stay, ride &amp; <span class="accent">explore Cao Bang</span></h1>
-    <p class="hero-sub">Rooms, bikes, tours and local know-how. Booked direct with the family that runs it.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/84941687931?text=Hi%20Luong.%20I%27d%20like%20to%20book%20a%20room." class="btn btn-wa" target="_blank" rel="noopener">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Book on WhatsApp
-      </a>
-      <a href="#services" class="btn btn-line-dark">See what we offer ↓</a>
+    <div class="home-head">
+      <div class="hero-badge"><span class="dot" aria-hidden="true"></span> Cao Bang · Northern Vietnam</div>
+      <h1>Stay, ride &amp; <span class="accent">explore Cao Bang</span></h1>
+      <p class="hero-sub">Rooms, bikes, tours and local know-how. Booked direct with the family that runs it.</p>
     </div>
+
+    <nav aria-label="Guest services">
+      <ul class="apps">
+        <li><a class="app clay" href="rooms.html" style="--i:0">
+          <span class="app-icon has-img"><img src="images/icons/rooms.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Rooms</span></a></li>
+        <li><a class="app moss" href="motorbike.html" style="--i:1">
+          <span class="app-icon has-img"><img src="images/icons/motorbike.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Motorbike</span></a></li>
+        <li><a class="app sky" href="tours.html" style="--i:2">
+          <span class="app-icon has-img"><img src="images/icons/tours.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Tours</span></a></li>
+        <li><a class="app gold" href="food.html" style="--i:3">
+          <span class="app-icon has-img"><img src="images/icons/food.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Food</span></a></li>
+        <li><a class="app graphite" href="services.html" style="--i:4">
+          <span class="app-icon has-img"><img src="images/icons/services.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Services</span></a></li>
+        <li><a class="app moss" href="itinerary.html" style="--i:5">
+          <span class="app-icon has-img"><img src="images/icons/plan-trip.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Plan Trip</span></a></li>
+        <li><a class="app gold" href="bus-ticket.html" style="--i:6">
+          <span class="app-icon has-img"><img src="images/icons/bus-tickets.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Bus Tickets</span></a></li>
+        <li><a class="app sky" href="bus/ban-gioc-bus-guide.html" style="--i:7">
+          <span class="app-icon has-img"><img src="images/icons/local-bus.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Local Bus</span></a></li>
+        <li><a class="app clay" href="how-to-ride.html" style="--i:8">
+          <span class="app-icon has-img"><img src="images/icons/how-to-ride.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">How to Ride</span></a></li>
+        <li><a class="app sky" href="https://senshome.netlify.app/map/" target="_blank" rel="noopener" aria-label="Travel Map (opens in a new tab)" style="--i:9">
+          <span class="app-icon has-img"><img src="images/icons/travel-map.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Travel Map</span></a></li>
+        <li><a class="app graphite" href="welcome.html" style="--i:10">
+          <span class="app-icon has-img"><img src="images/icons/welcome.webp" width="256" height="256" alt="" decoding="async"></span>
+          <span class="app-label">Welcome</span></a></li>
+        <li><a class="app gold" href="https://maps.app.goo.gl/5jb4L7BNKuPyUpYT8" target="_blank" rel="noopener" aria-label="Reviews on Google (opens in a new tab)" style="--i:11">
+          <span class="app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span>
+          <span class="app-label">Reviews</span></a></li>
+      </ul>
+    </nav>
+
+    <nav class="dock" aria-label="Contact Hoa An Hotel">
+      <a class="app wa" href="https://wa.me/84941687931?text=Hi%20Luong.%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="WhatsApp us (opens WhatsApp)" style="--i:12">
+        <span class="app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"/><path d="M9 10h6M9 13.5h4"/></svg></span>
+        <span class="app-label">WhatsApp</span></a>
+      <a class="app sky" href="https://maps.app.goo.gl/5jb4L7BNKuPyUpYT8" target="_blank" rel="noopener" aria-label="Directions to Hoa An Hotel (opens Google Maps)" style="--i:13">
+        <span class="app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4 4 10.5l7 2.5 2.5 7z"/></svg></span>
+        <span class="app-label">Directions</span></a>
+    </nav>
   </div>
 </section>
 
@@ -659,6 +852,77 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   })();
+</script>
+
+<script src="js/vendor/paper-shaders.min.js" defer></script>
+<script>
+  // First-visit intro with liquid-metal button. Vanilla port of LiquidMetalButton (@paper-design/shaders).
+  window.addEventListener('DOMContentLoaded', function () {
+    var root = document.documentElement;
+    var intro = document.getElementById('intro');
+    if (!intro || root.classList.contains('intro-seen')) return;
+
+    var btn = document.getElementById('introEnter');
+    var host = document.getElementById('lmShader');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var mount = null, hovered = false, closing = false;
+    var lastFocus = document.activeElement;
+
+    // Shader: liquid metal across the full pill (shape 0 = full-fill with soft edge mask)
+    if (!reduce && window.PaperShaders && host) {
+      try {
+        var blank = new Image();
+        blank.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+        mount = new PaperShaders.ShaderMount(host, PaperShaders.liquidMetalFragmentShader, {
+          u_colorBack: [0, 0, 0, 0], u_colorTint: [1, 1, 1, 1], u_image: blank, u_isImage: false,
+          u_repetition: 4, u_softness: 0.5, u_shiftRed: 0.3, u_shiftBlue: 0.3,
+          u_distortion: 0, u_contour: 0, u_angle: 45, u_shape: 0,
+          u_fit: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0.1, u_offsetY: -0.1,
+          u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0
+        }, undefined, 0.6);
+      } catch (e) { mount = null; } // CSS metal ring stays as fallback
+    }
+    var speed = function (s) { if (mount && mount.setSpeed) mount.setSpeed(s); };
+
+    btn.addEventListener('mouseenter', function () { hovered = true; speed(1); });
+    btn.addEventListener('mouseleave', function () { hovered = false; speed(0.6); });
+
+    function close() {
+      if (closing) return; closing = true;
+      try { localStorage.setItem('hoaan_intro_v1', '1'); } catch (e) {}
+      var done = function () {
+        root.classList.add('intro-seen');          // releases scroll + starts the icon cascade
+        if (mount && mount.dispose) mount.dispose();
+        intro.remove();
+        var first = document.querySelector('.apps .app');
+        if (first) first.focus({ preventScroll: true });
+      };
+      if (reduce) return done();
+      intro.classList.add('leaving');
+      setTimeout(done, 260);
+    }
+
+    btn.addEventListener('click', function (e) {
+      speed(2.4); setTimeout(function () { speed(hovered ? 1 : 0.6); }, 300);
+      if (!reduce) {
+        var r = btn.getBoundingClientRect();
+        var dot = document.createElement('span');
+        dot.className = 'lm-ripple';
+        dot.style.left = ((e.clientX || r.left + r.width / 2) - r.left) + 'px';
+        dot.style.top = ((e.clientY || r.top + r.height / 2) - r.top) + 'px';
+        btn.appendChild(dot);
+        setTimeout(function () { dot.remove(); }, 600);
+      }
+      setTimeout(close, reduce ? 0 : 280);           // let the ripple read before the fade
+    });
+
+    // Keyboard: Esc closes; Tab stays on the single button inside the dialog
+    intro.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+      if (e.key === 'Tab') { e.preventDefault(); btn.focus(); }
+    });
+    btn.focus({ preventScroll: true });
+  });
 </script>
 
 </body>
