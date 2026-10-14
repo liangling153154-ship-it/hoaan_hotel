@@ -65,7 +65,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .menu-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,0.13);border-color:var(--gm)}
 .menu-card.selected{border-color:var(--gd);box-shadow:0 0 0 3px rgba(74,53,49,0.15)}
 .menu-card.selected .mc-check{opacity:1;transform:scale(1)}
-.mc-img{width:100%;height:210px;object-fit:cover;display:block;background:var(--cr)}
+.mc-img{width:100%;height:210px;object-fit:contain;padding:12px;display:block;background:var(--cr);filter:drop-shadow(0 6px 8px rgba(60,26,14,0.22))}
 .mc-img-placeholder{width:100%;height:210px;background:linear-gradient(135deg,var(--gl) 0%,rgba(242,243,244,0.8) 100%);display:flex;align-items:center;justify-content:center;font-size:3rem}
 .mc-body{padding:13px 14px 14px}
 .mc-name{font-family:'Bricolage Grotesque', sans-serif;font-size:1.05rem;font-weight:700;color:var(--tx);line-height:1.2;margin-bottom:4px}
@@ -83,11 +83,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* ── COFFEE ROW STYLE (wider cards for drinks) ── */
 .coffee-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+/* groups have 4 items — 2 columns beside the order panel avoids a lone card on the last row */
+@media(min-width:961px){.coffee-grid{grid-template-columns:repeat(2,1fr)}}
 .coffee-card{background:white;border-radius:12px;overflow:hidden;border:1.5px solid var(--line);cursor:pointer;transition:all 0.18s;position:relative}
 .coffee-card:hover{border-color:var(--gm);background:#FAFBFB}
 .coffee-card.selected{border-color:var(--gd);background:rgba(110,92,87,0.06)}
 .coffee-card.selected .mc-check{opacity:1;transform:scale(1)}
-.cc-img{width:100%;height:150px;object-fit:cover;display:block}
+.cc-img{width:100%;height:150px;object-fit:contain;padding:10px;display:block;background:var(--cr);filter:drop-shadow(0 5px 6px rgba(60,26,14,0.22))}
+.cf-group{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin-top:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:0.82rem;font-weight:700;color:var(--gd)}
+.cf-group:first-child{margin-top:0}
+.cf-group::after{content:'';flex:1;height:1px;background:var(--line)}
+.cc-note{font-size:0.64rem;font-weight:600;color:var(--or);line-height:1.35;margin-bottom:8px}
 .cc-img-placeholder{width:100%;height:150px;background:linear-gradient(135deg,rgba(43,33,30,0.08) 0%,rgba(242,243,244,0.9) 100%);display:flex;align-items:center;justify-content:center;font-size:2.2rem}
 .cc-body{padding:10px 12px 11px}
 .cc-name{font-size:0.86rem;font-weight:600;color:var(--tx);margin-bottom:2px}
@@ -278,7 +284,7 @@ footer a{color:#CDABA2}
       <div class="section-label">
         <div>
           <div class="section-label-text">🥣 Breakfast Menu</div>
-          <div class="section-label-sub">Served 6:30 – 9:30 am · Pre-order by 9 pm the night before · All dishes 50.000đ</div>
+          <div class="section-label-sub">Served 6:30 – 9:30 am · Pre-order by 9 pm the night before · Most dishes 50.000đ</div>
         </div>
         <div class="section-label-line"></div>
       </div>
@@ -290,7 +296,7 @@ footer a{color:#CDABA2}
       <div class="section-label" style="margin-top:36px">
         <div>
           <div class="section-label-text">☕ Coffee &amp; Tea</div>
-          <div class="section-label-sub">Espresso machine · Cao Bang specialty beans · Available all day</div>
+          <div class="section-label-sub">Espresso machine · Ground per cup · Made to order · Available all day</div>
         </div>
         <div class="section-label-line"></div>
       </div>
@@ -437,85 +443,125 @@ const BREAKFAST = [
   {
     id:'bf-western', name:'Western Breakfast', price:50000,
     desc:'1-2 breads · 2 eggs (omelet or fried) · sausages · side salad',
-    img:'images/services/bf-western.jpg', emoji:'🍳'
+    img:'images/services/bf-western.webp', emoji:'🍳'
   },
   {
     id:'bf-pancake', name:'Pancake', price:50000,
     desc:'Pancakes with seasonal fruit · honey, chocolate, or strawberry sauce',
-    img:'images/services/bf-pancake.jpg', emoji:'🥞'
+    img:'images/services/bf-pancake.webp', emoji:'🥞'
+  },
+  {
+    id:'bf-chicken', name:'Roasted Chicken Breakfast Set', price:70000,
+    desc:'Roasted chicken thigh · fried egg · baguette · fresh salad',
+    img:'images/services/bf-chicken.webp', emoji:'🍗'
+  },
+  {
+    id:'bf-yogurt', name:'Yogurt with Oats', price:50000,
+    desc:'Creamy yogurt · rolled oats · seasonal fruit',
+    img:'images/services/bf-yogurt.webp', emoji:'🥣'
   },
   {
     id:'bf-pho', name:'Pho — Cao Bang', price:50000,
     desc:'Rich broth · roasted duck, crispy pork belly, grilled meat, or local sausage',
-    img:'images/services/bf-pho.jpg', emoji:'🍜'
+    img:'images/services/bf-pho.webp', emoji:'🍜'
   },
   {
     id:'bf-rice-roll', name:'Steamed Rice Rolls', price:50000,
     desc:'Silky minced-pork rice sheets · bone broth · whole soft-boiled egg · pork sausage',
-    img:'images/services/bf-riceroll.jpg', emoji:'🍙'
+    img:'images/services/bf-riceroll.webp', emoji:'🍙'
   },
   {
-    id:'bf-honey-cake', name:'Honey-Brown Sponge Cake', price:50000,
-    desc:'Soft, fluffy sponge cake infused with rich brown sugar and golden honey',
-    img:'images/services/bf-honey-cake.jpg', emoji:'🍯'
+    id:'bf-beef-noodle', name:'Beef Noodle', price:50000,
+    desc:'Noodle soup with beef and egg in a light, flavorful broth',
+    img:'images/services/bf-beef.webp', emoji:'🍲'
+  },
+  {
+    id:'bf-bun-cha', name:'Bún Chả', price:70000,
+    desc:'Grilled pork & patties in sweet-savoury broth · rice vermicelli · fresh herbs',
+    img:'images/services/bf-buncha.webp', emoji:'🍖'
   },
 ];
 
 const COFFEE = [
+  // ── Vietnamese · Robusta ──
   {
-    id:'cf-vn', name:'Vietnamese Brown Coffee', price:35000,
-    desc:'Strong espresso with sweetened condensed milk',
-    img:'images/services/cf-vn.jpg', emoji:'☕'
+    id:'cf-den', group:'Vietnamese · Robusta', name:'Cà Phê Đen', price:30000,
+    desc:'Vietnamese black coffee — strong dark-roast Robusta, no milk. Hot or over ice.',
+    img:'images/services/cf-den.webp', emoji:'☕'
   },
   {
-    id:'cf-long', name:'Long Black', price:35000,
-    desc:'Double espresso topped with hot water',
-    img:'images/services/cf-long.jpg', emoji:'☕'
+    id:'cf-sua', group:'Vietnamese · Robusta', name:'Cà Phê Sữa', price:35000,
+    desc:'Vietnamese milk coffee — dark roast over sweetened condensed milk. Hot or over ice.',
+    img:'images/services/cf-sua.webp', emoji:'☕'
   },
   {
-    id:'cf-bacxiu', name:'Bac Xiu', price:40000,
-    desc:'Milky Vietnamese coffee — light espresso, more milk',
-    img:'images/services/cf-bacxiu.jpg', emoji:'🥛'
+    id:'cf-bacxiu', group:'Vietnamese · Robusta', name:'Bạc Xỉu', price:40000,
+    desc:'The gentle one — mostly milk with a short shot. Start here if you take it mild.',
+    img:'images/services/cf-bacxiu.webp', emoji:'🥛'
   },
   {
-    id:'cf-espresso', name:'Espresso', price:30000,
-    desc:'Double shot — Vietnam specialty beans - Robusta/Arabica',
-    img:'images/services/cf-espresso.jpg', emoji:'☕'
+    id:'cf-egg', group:'Vietnamese · Robusta', name:'Cà Phê Trứng', price:70000,
+    desc:'Egg coffee — whipped egg yolk and sugar over strong coffee. Rich and creamy.',
+    note:'Pre-order needed — please ask ahead',
+    img:'images/services/cf-egg.webp', emoji:'☕'
+  },
+  // ── Black · Arabica ──
+  {
+    id:'cf-espresso', group:'Black · Arabica', name:'Espresso', price:40000,
+    desc:'Double shot as standard.',
+    img:'images/services/cf-espresso.webp', emoji:'☕'
   },
   {
-    id:'cf-tea', name:'Black Tea', price:15000,
-    desc:'Hot brewed black tea',
-    img:'images/services/cf-tea.jpg', emoji:'🍵'
+    id:'cf-long', group:'Black · Arabica', name:'Long Black', price:40000,
+    desc:'Double espresso over hot water.',
+    img:'images/services/cf-long.webp', emoji:'☕'
   },
   {
-    id:'cf-cappuccino', name:'Cappuccino', price:45000,
-    desc:'Espresso topped with steamed milk foam — classic Italian style',
-    img:'images/services/cf-cappuccino.jpg', emoji:'☕'
+    id:'cf-iced-americano', group:'Black · Arabica', name:'Iced Americano', price:40000,
+    desc:'Two shots over cold water and ice.',
+    img:'images/services/cf-iced-americano.webp', emoji:'🧊'
   },
   {
-    id:'cf-latte', name:'Caffè Latte', price:45000,
-    desc:'Smooth espresso with silky steamed milk',
-    img:'images/services/cf-latte.jpg', emoji:'☕'
+    id:'cf-filter', group:'Black · Arabica', name:'Filter Coffee', price:65000,
+    desc:'Slow-brewed coffee with a clean, delicate flavour.',
+    img:'images/services/cf-filter.webp', emoji:'☕'
+  },
+  // ── With Milk · Arabica ──
+  {
+    id:'cf-cappuccino', group:'With Milk · Arabica', name:'Cappuccino', price:45000,
+    desc:'Espresso under thick milk foam.',
+    img:'images/services/cf-cappuccino.webp', emoji:'☕'
   },
   {
-    id:'cf-flatwhite', name:'Flat White', price:45000,
-    desc:'Double espresso with velvety micro-foam milk',
-    img:'images/services/cf-flatwhite.jpg', emoji:'☕'
+    id:'cf-flatwhite', group:'With Milk · Arabica', name:'Flat White', price:45000,
+    desc:'Double shot, velvety microfoam.',
+    img:'images/services/cf-flatwhite.webp', emoji:'☕'
   },
   {
-    id:'cf-iced-americano', name:'Iced Americano', price:40000,
-    desc:'Espresso shots over cold water and ice — crisp and refreshing',
-    img:'images/services/cf-iced-americano.jpg', emoji:'🧊'
+    id:'cf-latte', group:'With Milk · Arabica', name:'Caffè Latte', price:50000,
+    desc:'Silky steamed milk, light foam.',
+    img:'images/services/cf-latte.webp', emoji:'☕'
   },
   {
-    id:'cf-spanish', name:'Spanish Latte', price:45000,
-    desc:'Espresso with steamed milk and sweetened condensed milk',
-    img:'images/services/cf-spanish.jpg', emoji:'☕'
+    id:'cf-mocha', group:'With Milk · Arabica', name:'Mocha', price:55000,
+    desc:'Espresso, chocolate, steamed milk.',
+    img:'images/services/cf-mocha.webp', emoji:'🍫'
+  },
+  // ── Other ──
+  {
+    id:'cf-tea', group:'Other', name:'Black Tea', price:25000,
+    desc:'Brewed by the pot. Hot or iced.',
+    img:'images/services/cf-tea.webp', emoji:'🍵'
   },
   {
-    id:'cf-mocha', name:'Mocha', price:50000,
-    desc:'Espresso with chocolate sauce and steamed milk — rich and indulgent',
-    img:'images/services/cf-mocha.jpg', emoji:'🍫'
+    id:'cf-chocolate', group:'Other', name:'Chocolate Milk', price:50000,
+    desc:'Rich cocoa, steamed milk.',
+    img:'images/services/cf-chocolate.webp', emoji:'🍫'
+  },
+  {
+    id:'cf-matcha', group:'Other', name:'Matcha Latte', price:50000,
+    desc:'Green tea matcha and milk. Hot or iced.',
+    img:'images/services/cf-matcha.webp', emoji:'🍵'
   },
 ];
 
@@ -562,7 +608,15 @@ function buildBreakfast(){
 // ── BUILD COFFEE GRID ─────────────────────────────────────────
 function buildCoffee(){
   const grid = document.getElementById('coffeeGrid');
+  let lastGroup = null;
   COFFEE.forEach(item => {
+    if(item.group && item.group !== lastGroup){
+      const head = document.createElement('div');
+      head.className = 'cf-group';
+      head.textContent = item.group;
+      grid.appendChild(head);
+      lastGroup = item.group;
+    }
     const card = document.createElement('div');
     card.className = 'coffee-card';
     card.id = 'card-' + item.id;
@@ -573,6 +627,7 @@ function buildCoffee(){
       <div class="cc-body">
         <div class="cc-name">${item.name}</div>
         <div class="cc-desc">${item.desc}</div>
+        ${item.note ? `<div class="cc-note">${item.note}</div>` : ''}
         <div class="cc-foot">
           <div class="cc-price">${fmtV(item.price)}đ</div>
           <div class="mc-qty">
